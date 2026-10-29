@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="北門聖教會官方網站，提供教會最新消息、電子週報、聚會資訊與影音資源。">
+  <meta name="description" content="竹北新恩基督教會官方網站，提供教會最新消息、電子週報、聚會資訊與影音資源。">
   <meta name="theme-color" content="#202124">
-  <title>北門聖教會｜委身基督・榮光繁熱</title>
+  <title>竹北新恩基督教會</title>
   <style>
     :root {
       --red: #e3262e;
@@ -23,10 +23,38 @@
     body { margin: 0; color: var(--ink); background: #fff; font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif; line-height: 1.65; }
     a { color: inherit; text-decoration: none; }
     button { font: inherit; cursor: pointer; }
-    .site-header { max-width: var(--max); margin: auto; padding: 22px 32px 18px; display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 132px; }
+    
+    /* --- 修改後的 Header 樣式 --- */
+    .site-header {
+      max-width: var(--max);
+      margin: auto;
+      padding: 22px 32px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      min-height: 132px;
+      /* 設定背景圖片為您提供的圖片 */
+      background-image: url('/assets/Header.jpg');
+      /* 將背景定位在「只有一部分」的位置 (聖經圖案) */
+      background-position: left 20% center; /* 向左偏移 20%，垂直置中 */
+      background-repeat: no-repeat;
+      /* 確保背景覆蓋整個 header 區域 */
+      background-size: cover; 
+    }
+
+    /* 為了讓文字在背景圖上清晰可見，增加陰影或半透明遮罩 (選用，視實際效果調整) */
+    .brand-name, .header-verse {
+      /* 給文字加上一層淡淡的白色陰影，避免背景干擾閱讀 */
+      text-shadow: 0 0 3px rgba(255, 255, 255, 0.8), 0 0 5px rgba(0, 0, 0, 0.3);
+    }
+
     .brand { display: flex; align-items: center; gap: 14px; }
-    .cross { color: var(--red); font-size: 66px; font-weight: 900; line-height: .9; font-family: Georgia, serif; }
-    .brand-name { margin: 0; font-size: clamp(26px, 3vw, 42px); letter-spacing: .08em; font-weight: 900; line-height: 1.2; }
+    
+    /* 隱藏原本的紅色十字架符號 (依據您的要求) */
+    .cross { display: none; } 
+    
+    .brand-name { margin: 0; font-size: clamp(26px, 3vw, 42px); letter-spacing: .08em; font-weight: 900; line-height: 1.2; color: #800000; /* 設定文字顏色為深紅色，與背景圖上的字色呼應 */ }
     .brand-tagline { margin: 8px 0 0 2px; color: #606775; letter-spacing: .18em; font-size: 14px; }
     .header-verse { text-align: right; color: #5b606b; font-size: 14px; max-width: 340px; }
     .header-verse strong { color: #292d34; display: block; font-size: 15px; font-weight: 600; }
@@ -119,11 +147,12 @@
 </head>
 <body>
   <header class="site-header" id="top">
-    <a class="brand" href="#top" aria-label="北門聖教會首頁">
+    <a class="brand" href="#top" aria-label="竹北新恩基督教會首頁">
+      <!-- 原本的 cross span 仍然存在，但在 CSS 中已被隱藏 (display: none) -->
       <span class="cross" aria-hidden="true">†</span>
       <span>
-        <h1 class="brand-name">北門聖教會</h1>
-        <p class="brand-tagline">委身基督・榮光繁熱</p>
+        <h1 class="brand-name">竹北新恩基督教會</h1>
+        <p class="brand-tagline"></p>
       </span>
     </a>
     <div class="header-verse">
@@ -133,19 +162,18 @@
   </header>
 
   <div class="nav-wrap">
-    <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mainNav">☰　網站選單</button>
+    <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mainNav">☰ 網站選單</button>
     <nav class="nav" id="mainNav" aria-label="主要導覽">
       <a class="active" href="#top">首頁</a>
       <a href="#news">電子週報</a>
       <a href="#community">新朋友看這裡</a>
-      <a href="#about">認識北門</a>
-      <a href="#gatherings">北門課程</a>
+      <a href="#about">認識新恩</a>
+      <a href="#gatherings">新恩課程</a>
       <a href="#community">牧區與小組</a>
-      <a href="#about">北門事工</a>
+      <a href="#about">新恩事工</a>
       <a href="#resources">下載中心</a>
       <a href="#contact">聯絡與交通</a>
       <a href="#giving">奉獻支持</a>
-      <a href="#english">ENGLISH</a>
     </nav>
   </div>
 
@@ -154,7 +182,7 @@
       <section class="main-column" aria-label="最新內容">
         <div class="hero" id="hero">
           <div class="hero-content">
-            <p class="eyebrow" id="heroEyebrow">北門聖教會・最新消息</p>
+            <p class="eyebrow" id="heroEyebrow">竹北新恩・最新消息</p>
             <h2 id="heroTitle">電子週報</h2>
             <p id="heroSubtitle">最新消息・教會活動・信息分享</p>
             <a class="primary-btn" id="heroLink" href="#news">查看最新週報 <span aria-hidden="true">›</span></a>
@@ -168,12 +196,12 @@
 
         <div class="section-head" id="news">
           <h2>最新消息</h2>
-          <a class="more" href="#news-list" data-notice="最新消息列表可以在後續接上正式公告內容。">查看更多　›</a>
+          <a class="more" href="#news-list" data-notice="最新消息列表可以在後續接上正式公告內容。">查看更多 ›</a>
         </div>
         <div class="news-grid" id="news-list">
           <a class="news-card" href="#news" data-notice="請將這則示範公告替換成教會最新的聚會時間公告。">
             <img class="news-image" src="https://images.unsplash.com/photo-1504052434569-70ad5836ab65?auto=format&fit=crop&w=700&q=80" alt="桌上的聖經與咖啡">
-            <div class="news-body"><span class="date">最新公告</span><h3>主日崇拜及聚會資訊</h3><p>歡迎來到北門聖教會，一起敬拜、團契與成長。</p></div>
+            <div class="news-body"><span class="date">最新公告</span><h3>主日崇拜及聚會資訊</h3><p>歡迎來到竹北新恩教會，一起敬拜、團契與成長。</p></div>
           </a>
           <a class="news-card" href="#news" data-notice="請將這則示範公告替換成教會活動資訊。">
             <img class="news-image" src="https://images.unsplash.com/photo-1507692049790-de58290a4334?auto=format&fit=crop&w=700&q=80" alt="十字架與溫暖的天空">
@@ -188,23 +216,15 @@
 
       <aside class="sidebar" aria-label="教會服務與影音">
         <section class="side-block" id="community">
-          <h2 class="side-title">北門 Line 生活圈</h2>
+          <h2 class="side-title">新恩FB</h2>
           <a class="side-button line-btn" href="#contact" data-notice="請將 LINE 官方帳號網址填入 index.html 的連結位置。"><span class="side-icon">LINE</span>加入好友 <span aria-hidden="true">›</span></a>
         </section>
         <section class="side-block" id="resources">
           <h2 class="side-title">主日崇拜直播</h2>
           <a class="side-button youtube-btn" href="#resources" data-notice="請將教會 YouTube 直播或頻道網址填入 index.html 的連結位置。"><span class="side-icon">▶</span>主日信息直播 <span aria-hidden="true">›</span></a>
         </section>
-        <section class="side-block">
-          <h2 class="side-title">Bible on Air 北門雲端靈修</h2>
-          <a class="side-button bible-btn" href="#resources" data-notice="請將 Bible on Air 正式連結填入 index.html 的連結位置。">
-            <span class="bible-symbol" aria-hidden="true">🎧</span>
-            <span>BIBLE ON AIR<span class="bible-sub">聽見神的話・每天更靠近祂</span></span>
-            <span aria-hidden="true" style="margin-left:auto;font-size:28px">›</span>
-          </a>
-        </section>
         <section class="verse-card" aria-label="今日靈修金句">
-          <p class="verse-label">▣　今日靈修金句</p>
+          <p class="verse-label">▣ 今日靈修金句</p>
           <p class="verse-text" id="verseText">我靠著那加給我力量的，凡事都能做。</p>
           <p class="verse-ref" id="verseRef">腓立比書 4:13</p>
         </section>
@@ -223,16 +243,16 @@
   </nav>
 
   <footer id="contact">
-    <div id="about">北門聖教會｜委身基督・榮光繁熱</div>
+    <div id="about">竹北新恩基督教會</div>
     <div>地址、電話與聚會時間請依教會正式資訊更新</div>
-    <div>© <span id="year"></span> 北門聖教會　版權所有</div>
+    <div>© <span id="year"></span> 竹北新恩基督教會 版權所有</div>
   </footer>
   <div class="notice" id="notice" role="status" aria-live="polite"></div>
 
   <script>
     const slides = [
       {
-        eyebrow: "北門聖教會・最新消息",
+        eyebrow: "竹北新恩・最新消息",
         title: "電子週報",
         subtitle: "最新消息・教會活動・信息分享",
         button: "查看最新週報",
@@ -244,7 +264,7 @@
         eyebrow: "WELCOME HOME",
         title: "新朋友看這裡",
         subtitle: "認識我們・一起敬拜・在愛中成長",
-        button: "認識北門聖教會",
+        button: "認識竹北新恩",
         target: "#community",
         image: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1600&q=85",
         position: "center"
@@ -270,7 +290,7 @@
       heroEyebrow.textContent = slide.eyebrow;
       heroTitle.textContent = slide.title;
       heroSubtitle.textContent = slide.subtitle;
-      heroLink.textContent = slide.button + "　›";
+      heroLink.textContent = slide.button + " ›";
       heroLink.href = slide.target;
       hero.style.backgroundImage = `linear-gradient(90deg, rgba(255,249,229,.95), rgba(255,249,229,.64) 43%, rgba(255,249,229,.04)), url("${slide.image}")`;
       hero.style.backgroundPosition = slide.position;
