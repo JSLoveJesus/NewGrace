@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="北門聖教會官方網站，提供教會最新消息、電子週報、聚會資訊與影音資源。">
+  <meta name="theme-color" content="#202124">
+  <title>北門聖教會｜委身基督・榮光繁熱</title>
+  <style>
+    :root {
+      --red: #e3262e;
+      --ink: #202124;
+      --muted: #667085;
+      --line: #e5e7eb;
+      --paper: #ffffff;
+      --soft: #f6f7f9;
+      --green: #08b52a;
+      --blue: #0872bd;
+      --max: 1440px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; color: var(--ink); background: #fff; font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif; line-height: 1.65; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; }
+    .site-header { max-width: var(--max); margin: auto; padding: 22px 32px 18px; display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 132px; }
+    .brand { display: flex; align-items: center; gap: 14px; }
+    .cross { color: var(--red); font-size: 66px; font-weight: 900; line-height: .9; font-family: Georgia, serif; }
+    .brand-name { margin: 0; font-size: clamp(26px, 3vw, 42px); letter-spacing: .08em; font-weight: 900; line-height: 1.2; }
+    .brand-tagline { margin: 8px 0 0 2px; color: #606775; letter-spacing: .18em; font-size: 14px; }
+    .header-verse { text-align: right; color: #5b606b; font-size: 14px; max-width: 340px; }
+    .header-verse strong { color: #292d34; display: block; font-size: 15px; font-weight: 600; }
+    .nav-wrap { background: var(--ink); border-bottom: 5px solid var(--red); }
+    .nav { max-width: var(--max); margin: auto; padding: 0 20px; display: flex; align-items: stretch; justify-content: space-between; }
+    .nav a { display: block; color: #fff; padding: 13px 15px; white-space: nowrap; font-size: 15px; transition: background .2s ease; }
+    .nav a:hover, .nav a.active { background: var(--red); }
+    .menu-toggle { display: none; background: transparent; color: #fff; border: 0; padding: 12px 20px; font-size: 16px; }
+    .page { max-width: var(--max); margin: 0 auto; padding: 26px 32px 18px; }
+    .layout { display: grid; grid-template-columns: minmax(0, 2.05fr) minmax(270px, .95fr); gap: 38px; }
+    .hero { position: relative; min-height: 370px; border-radius: 5px; overflow: hidden; display: flex; align-items: center; background: linear-gradient(90deg, rgba(255,249,229,.95), rgba(255,249,229,.64) 43%, rgba(255,249,229,.04)), url("https://images.unsplash.com/photo-1507692049790-de58290a4334?auto=format&fit=crop&w=1600&q=85") center 54%/cover; }
+    .hero-content { padding: clamp(26px, 5vw, 72px); max-width: 610px; }
+    .eyebrow { color: var(--red); font-weight: 800; letter-spacing: .15em; font-size: 13px; margin: 0 0 8px; }
+    .hero h2 { font-size: clamp(36px, 5vw, 62px); line-height: 1.15; margin: 0 0 18px; letter-spacing: .05em; }
+    .hero p { margin: 0 0 25px; font-size: clamp(16px, 2vw, 21px); letter-spacing: .08em; }
+    .primary-btn { display: inline-flex; align-items: center; gap: 10px; padding: 11px 22px; border-radius: 8px; background: var(--ink); color: white; font-weight: 700; transition: transform .2s, background .2s; }
+    .primary-btn:hover { background: var(--red); transform: translateY(-2px); }
+    .hero-dots { position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; }
+    .hero-dots button { width: 12px; height: 12px; border: 2px solid #fff; border-radius: 50%; padding: 0; background: #a5a5a5; }
+    .hero-dots button[aria-pressed="true"] { background: var(--red); }
+    .section-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin: 25px 0 15px; border-bottom: 1px solid var(--line); padding-bottom: 8px; }
+    .section-head h2 { font-size: 23px; margin: 0; padding-left: 13px; border-left: 8px solid var(--red); line-height: 1.3; }
+    .more { color: var(--muted); font-size: 14px; white-space: nowrap; }
+    .more:hover { color: var(--red); }
+    .news-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+    .news-card { border: 1px solid #eceef1; border-radius: 6px; overflow: hidden; background: #fff; transition: box-shadow .2s, transform .2s; }
+    .news-card:hover { box-shadow: 0 8px 24px rgba(20,25,35,.1); transform: translateY(-3px); }
+    .news-image { width: 100%; height: 125px; object-fit: cover; display: block; background: #eee; }
+    .news-body { padding: 12px 13px 16px; }
+    .date { display: inline-block; color: #fff; background: var(--red); border-radius: 4px; padding: 1px 9px; font-size: 12px; }
+    .news-card h3 { font-size: 17px; line-height: 1.4; margin: 8px 0 6px; }
+    .news-card p { margin: 0; font-size: 14px; color: var(--muted); }
+    .side-block { margin-bottom: 22px; }
+    .side-title { font-size: 19px; margin: 0 0 12px; padding-bottom: 6px; border-bottom: 3px solid var(--red); line-height: 1.3; }
+    .side-button { display: flex; align-items: center; justify-content: center; gap: 13px; width: 100%; min-height: 92px; border-radius: 9px; color: #fff; font-size: clamp(20px, 2vw, 29px); font-weight: 900; transition: filter .2s, transform .2s; }
+    .side-button:hover { filter: brightness(.94); transform: translateY(-2px); }
+    .line-btn { background: var(--green); }
+    .youtube-btn { background: #f10d17; }
+    .side-icon { display: inline-grid; place-items: center; border: 2px solid currentColor; border-radius: 13px; width: 47px; height: 37px; font-size: 20px; line-height: 1; }
+    .bible-btn { justify-content: flex-start; color: var(--blue); background: #fff; border: 1px solid #cdd7e2; padding: 12px 18px; font-size: 21px; }
+    .bible-symbol { font-size: 35px; }
+    .bible-sub { display: block; color: #1264a3; font-size: 12px; font-weight: 600; letter-spacing: .08em; }
+    .verse-card { background: linear-gradient(135deg, #faf7ef, #f2eee4); border-radius: 6px; padding: 20px 22px; margin-top: 26px; }
+    .verse-label { margin: 0 0 10px; font-size: 14px; font-weight: 700; }
+    .verse-text { font-family: "Noto Serif TC", "PMingLiU", serif; font-size: 23px; line-height: 1.6; margin: 0 0 10px; font-weight: 700; }
+    .verse-ref { color: var(--muted); margin: 0; font-size: 14px; }
+    .quick-links { background: #f3f5f8; margin-top: 0; }
+    .quick-inner { max-width: var(--max); margin: auto; padding: 19px 32px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    .quick-inner a { display: flex; align-items: center; gap: 9px; padding: 6px 12px; color: #444b58; font-weight: 600; }
+    .quick-inner a:hover { color: var(--red); }
+    .quick-icon { font-size: 22px; }
+    footer { max-width: var(--max); margin: auto; padding: 18px 32px 26px; display: flex; justify-content: space-between; gap: 12px; color: #778091; font-size: 13px; }
+    .notice { display: none; position: fixed; inset: auto 18px 18px; background: #202124; color: white; padding: 14px 18px; border-radius: 8px; box-shadow: 0 8px 30px #0002; z-index: 10; }
+    .notice.show { display: block; animation: rise .25s ease-out; }
+    @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 1000px) {
+      .site-header { min-height: 112px; }
+      .header-verse { display: none; }
+      .nav { flex-wrap: wrap; justify-content: flex-start; }
+      .nav a { padding: 12px 13px; }
+      .layout { grid-template-columns: minmax(0, 1.6fr) minmax(240px, .9fr); gap: 24px; }
+      .page { padding-left: 22px; padding-right: 22px; }
+      .news-grid { gap: 12px; }
+    }
+    @media (max-width: 720px) {
+      .site-header { padding: 18px 18px; min-height: auto; }
+      .cross { font-size: 52px; }
+      .brand-name { font-size: 27px; }
+      .brand-tagline { font-size: 12px; letter-spacing: .1em; }
+      .menu-toggle { display: block; width: 100%; text-align: left; }
+      .nav { display: none; padding: 0 12px 10px; }
+      .nav.open { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .nav a { padding: 10px 12px; }
+      .page { padding: 18px 15px; }
+      .layout { grid-template-columns: 1fr; gap: 28px; }
+      .hero { min-height: 330px; background-position: center; }
+      .hero-content { padding: 28px 24px; }
+      .hero h2 { font-size: 39px; }
+      .news-grid { grid-template-columns: 1fr; gap: 14px; }
+      .news-card { display: grid; grid-template-columns: 112px minmax(0, 1fr); }
+      .news-image { height: 100%; min-height: 130px; }
+      .news-body { padding: 12px; }
+      .news-card h3 { font-size: 16px; }
+      .side-button { min-height: 76px; }
+      .quick-inner { padding: 14px 16px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      footer { padding: 18px 16px 24px; flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="top">
+    <a class="brand" href="#top" aria-label="北門聖教會首頁">
+      <span class="cross" aria-hidden="true">†</span>
+      <span>
+        <h1 class="brand-name">北門聖教會</h1>
+        <p class="brand-tagline">委身基督・榮光繁熱</p>
+      </span>
+    </a>
+    <div class="header-verse">
+      <strong>「你們要在主裡常常喜樂，我再說，你們要喜樂。」</strong>
+      <span>腓立比書 4:4</span>
+    </div>
+  </header>
+
+  <div class="nav-wrap">
+    <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mainNav">☰　網站選單</button>
+    <nav class="nav" id="mainNav" aria-label="主要導覽">
+      <a class="active" href="#top">首頁</a>
+      <a href="#news">電子週報</a>
+      <a href="#community">新朋友看這裡</a>
+      <a href="#about">認識北門</a>
+      <a href="#gatherings">北門課程</a>
+      <a href="#community">牧區與小組</a>
+      <a href="#about">北門事工</a>
+      <a href="#resources">下載中心</a>
+      <a href="#contact">聯絡與交通</a>
+      <a href="#giving">奉獻支持</a>
+      <a href="#english">ENGLISH</a>
+    </nav>
+  </div>
+
+  <main class="page">
+    <div class="layout">
+      <section class="main-column" aria-label="最新內容">
+        <div class="hero" id="hero">
+          <div class="hero-content">
+            <p class="eyebrow" id="heroEyebrow">北門聖教會・最新消息</p>
+            <h2 id="heroTitle">電子週報</h2>
+            <p id="heroSubtitle">最新消息・教會活動・信息分享</p>
+            <a class="primary-btn" id="heroLink" href="#news">查看最新週報 <span aria-hidden="true">›</span></a>
+          </div>
+          <div class="hero-dots" aria-label="首頁主視覺切換">
+            <button type="button" data-slide="0" aria-label="顯示第 1 張" aria-pressed="true"></button>
+            <button type="button" data-slide="1" aria-label="顯示第 2 張" aria-pressed="false"></button>
+            <button type="button" data-slide="2" aria-label="顯示第 3 張" aria-pressed="false"></button>
+          </div>
+        </div>
+
+        <div class="section-head" id="news">
+          <h2>最新消息</h2>
+          <a class="more" href="#news-list" data-notice="最新消息列表可以在後續接上正式公告內容。">查看更多　›</a>
+        </div>
+        <div class="news-grid" id="news-list">
+          <a class="news-card" href="#news" data-notice="請將這則示範公告替換成教會最新的聚會時間公告。">
+            <img class="news-image" src="https://images.unsplash.com/photo-1504052434569-70ad5836ab65?auto=format&fit=crop&w=700&q=80" alt="桌上的聖經與咖啡">
+            <div class="news-body"><span class="date">最新公告</span><h3>主日崇拜及聚會資訊</h3><p>歡迎來到北門聖教會，一起敬拜、團契與成長。</p></div>
+          </a>
+          <a class="news-card" href="#news" data-notice="請將這則示範公告替換成教會活動資訊。">
+            <img class="news-image" src="https://images.unsplash.com/photo-1507692049790-de58290a4334?auto=format&fit=crop&w=700&q=80" alt="十字架與溫暖的天空">
+            <div class="news-body"><span class="date">教會活動</span><h3>教會活動與福音聚會</h3><p>邀請您與家人朋友一同參與，分享信仰中的盼望。</p></div>
+          </a>
+          <a class="news-card" href="#community" data-notice="請將這則示範公告替換成青年或小組活動報名資訊。">
+            <img class="news-image" src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=700&q=80" alt="人們一起參與團體活動">
+            <div class="news-body"><span class="date">團契生活</span><h3>牧區、小組與團契生活</h3><p>在彼此關懷與同行中建立連結，歡迎新朋友加入。</p></div>
+          </a>
+        </div>
+      </section>
+
+      <aside class="sidebar" aria-label="教會服務與影音">
+        <section class="side-block" id="community">
+          <h2 class="side-title">北門 Line 生活圈</h2>
+          <a class="side-button line-btn" href="#contact" data-notice="請將 LINE 官方帳號網址填入 index.html 的連結位置。"><span class="side-icon">LINE</span>加入好友 <span aria-hidden="true">›</span></a>
+        </section>
+        <section class="side-block" id="resources">
+          <h2 class="side-title">主日崇拜直播</h2>
+          <a class="side-button youtube-btn" href="#resources" data-notice="請將教會 YouTube 直播或頻道網址填入 index.html 的連結位置。"><span class="side-icon">▶</span>主日信息直播 <span aria-hidden="true">›</span></a>
+        </section>
+        <section class="side-block">
+          <h2 class="side-title">Bible on Air 北門雲端靈修</h2>
+          <a class="side-button bible-btn" href="#resources" data-notice="請將 Bible on Air 正式連結填入 index.html 的連結位置。">
+            <span class="bible-symbol" aria-hidden="true">🎧</span>
+            <span>BIBLE ON AIR<span class="bible-sub">聽見神的話・每天更靠近祂</span></span>
+            <span aria-hidden="true" style="margin-left:auto;font-size:28px">›</span>
+          </a>
+        </section>
+        <section class="verse-card" aria-label="今日靈修金句">
+          <p class="verse-label">▣　今日靈修金句</p>
+          <p class="verse-text" id="verseText">我靠著那加給我力量的，凡事都能做。</p>
+          <p class="verse-ref" id="verseRef">腓立比書 4:13</p>
+        </section>
+      </aside>
+    </div>
+  </main>
+
+  <nav class="quick-links" aria-label="快速連結">
+    <div class="quick-inner">
+      <a href="#about"><span class="quick-icon">⌂</span>教會地址</a>
+      <a href="#contact"><span class="quick-icon">⌖</span>交通資訊</a>
+      <a href="#contact"><span class="quick-icon">☎</span>聯絡我們</a>
+      <a href="#community"><span class="quick-icon">●</span>LINE 生活圈</a>
+      <a href="#giving" id="giving"><span class="quick-icon">♥</span>奉獻支持</a>
+    </div>
+  </nav>
+
+  <footer id="contact">
+    <div id="about">北門聖教會｜委身基督・榮光繁熱</div>
+    <div>地址、電話與聚會時間請依教會正式資訊更新</div>
+    <div>© <span id="year"></span> 北門聖教會　版權所有</div>
+  </footer>
+  <div class="notice" id="notice" role="status" aria-live="polite"></div>
+
+  <script>
+    const slides = [
+      {
+        eyebrow: "北門聖教會・最新消息",
+        title: "電子週報",
+        subtitle: "最新消息・教會活動・信息分享",
+        button: "查看最新週報",
+        target: "#news",
+        image: "https://images.unsplash.com/photo-1507692049790-de58290a4334?auto=format&fit=crop&w=1600&q=85",
+        position: "center 54%"
+      },
+      {
+        eyebrow: "WELCOME HOME",
+        title: "新朋友看這裡",
+        subtitle: "認識我們・一起敬拜・在愛中成長",
+        button: "認識北門聖教會",
+        target: "#community",
+        image: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1600&q=85",
+        position: "center"
+      },
+      {
+        eyebrow: "WORSHIP TOGETHER",
+        title: "主日崇拜",
+        subtitle: "在敬拜中遇見神，在團契中彼此扶持",
+        button: "查看聚會資訊",
+        target: "#gatherings",
+        image: "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?auto=format&fit=crop&w=1600&q=85",
+        position: "center"
+      }
+    ];
+    const hero = document.getElementById("hero");
+    const heroEyebrow = document.getElementById("heroEyebrow");
+    const heroTitle = document.getElementById("heroTitle");
+    const heroSubtitle = document.getElementById("heroSubtitle");
+    const heroLink = document.getElementById("heroLink");
+    const dots = [...document.querySelectorAll("[data-slide]")];
+    function setSlide(index) {
+      const slide = slides[index];
+      heroEyebrow.textContent = slide.eyebrow;
+      heroTitle.textContent = slide.title;
+      heroSubtitle.textContent = slide.subtitle;
+      heroLink.textContent = slide.button + "　›";
+      heroLink.href = slide.target;
+      hero.style.backgroundImage = `linear-gradient(90deg, rgba(255,249,229,.95), rgba(255,249,229,.64) 43%, rgba(255,249,229,.04)), url("${slide.image}")`;
+      hero.style.backgroundPosition = slide.position;
+      dots.forEach((dot, i) => dot.setAttribute("aria-pressed", String(i === index)));
+    }
+    dots.forEach(dot => dot.addEventListener("click", () => setSlide(Number(dot.dataset.slide))));
+
+    const menuToggle = document.getElementById("menuToggle");
+    const mainNav = document.getElementById("mainNav");
+    menuToggle.addEventListener("click", () => {
+      const isOpen = mainNav.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+    });
+    mainNav.querySelectorAll("a").forEach(link => link.addEventListener("click", () => {
+      mainNav.classList.remove("open");
+      menuToggle.setAttribute("aria-expanded", "false");
+      mainNav.querySelectorAll("a").forEach(item => item.classList.remove("active"));
+      link.classList.add("active");
+    }));
+
+    let noticeTimer;
+    const notice = document.getElementById("notice");
+    document.querySelectorAll("[data-notice]").forEach(link => link.addEventListener("click", event => {
+      event.preventDefault();
+      notice.textContent = link.dataset.notice;
+      notice.classList.add("show");
+      clearTimeout(noticeTimer);
+      noticeTimer = setTimeout(() => notice.classList.remove("show"), 4200);
+    }));
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
