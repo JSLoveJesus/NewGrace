@@ -112,6 +112,38 @@
     footer { max-width: var(--max); margin: auto; padding: 18px 32px 26px; display: flex; justify-content: space-between; gap: 12px; color: #778091; font-size: 13px; }
     .notice { display: none; position: fixed; inset: auto 18px 18px; background: #202124; color: white; padding: 14px 18px; border-radius: 8px; box-shadow: 0 8px 30px #0002; z-index: 10; }
     .notice.show { display: block; animation: rise .25s ease-out; }
+	
+	/* 返回頂部按鈕樣式 */
+    #backToTop {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      width: 45px;
+      height: 45px;
+      background: var(--red);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      font-size: 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s, visibility 0.3s, transform 0.2s;
+      z-index: 99;
+    }
+    #backToTop.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    #backToTop:hover {
+      transform: translateY(-3px);
+      filter: brightness(1.1);
+    }
+	
     @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     @media (max-width: 1000px) {
       .header-verse { display: none; }
@@ -264,6 +296,9 @@
     <div>© <span id="year"></span> 竹北新恩基督教會 版權所有</div>
   </footer>
   <div class="notice" id="notice" role="status" aria-live="polite"></div>
+  
+  <!-- 返回頂部按鈕 -->
+  <button id="backToTop" aria-label="返回頂部">▲</button>
 
   <script>
     const slides = [
@@ -368,6 +403,23 @@
       noticeTimer = setTimeout(() => notice.classList.remove("show"), 4200);
     }));
     document.getElementById("year").textContent = new Date().getFullYear();
+	
+	const backToTopBtn = document.getElementById("backToTop");
+    
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 300) {
+        backToTopBtn.classList.add("show");
+      } else {
+        backToTopBtn.classList.remove("show");
+      }
+    });
+
+    backToTopBtn.addEventListener("click", () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    });
   </script>
 </body>
 </html>
