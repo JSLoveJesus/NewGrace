@@ -23,7 +23,6 @@
     body { margin: 0; color: var(--ink); background: #fff; font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif; line-height: 1.65; }
     a { color: inherit; text-decoration: none; }
     
-    /* 標頭樣式（與首頁一致） */
     .site-header {
       max-width: var(--max);
       margin: auto;
@@ -40,27 +39,26 @@
     .brand-name { margin: 0; font-size: clamp(24px, 2.5vw, 36px); letter-spacing: .08em; font-weight: 900; line-height: 1.2; color: #800000; }
     .brand-tagline { margin: 4px 0 0 2px; color: #606775; letter-spacing: .18em; font-size: 13px; }
     
-	.header-verse { text-align: right; color: #5b606b; font-size: 14px; max-width: clamp(220px, 30vw, 360px); }
+    .header-verse { text-align: right; color: #5b606b; font-size: 14px; max-width: clamp(220px, 30vw, 360px); }
     .header-verse strong { color: #292d34; display: block; font-size: 15px; font-weight: 600; }
-	
+    
     .nav-wrap { background: var(--ink); border-bottom: 5px solid var(--red); }
     .nav { max-width: var(--max); margin: auto; padding: 0 20px; display: flex; align-items: stretch; justify-content: space-between; }
     .nav a { display: block; color: #fff; padding: 13px 15px; white-space: nowrap; font-size: 15px; transition: background .2s ease; }
     .nav a:hover, .nav a.active { background: var(--red); }
+    .menu-toggle { display: none; background: transparent; color: #fff; border: 0; padding: 12px 20px; font-size: 16px; }
 
-	.quick-links { background: #f3f5f8; margin-top: 0; }
+    .quick-links { background: #f3f5f8; margin-top: 0; }
     .quick-inner { max-width: var(--max); margin: auto; padding: 19px 32px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
     .quick-inner a { display: flex; align-items: center; gap: 9px; padding: 6px 12px; color: #444b58; font-weight: 600; }
     .quick-inner a:hover { color: var(--red); }
     .quick-icon { font-size: 22px; }
-	
-    /* 頁面主要內容區 */
+    
     .page { max-width: 1000px; margin: 0 auto; padding: 40px 24px 60px; }
     .page-title-box { text-align: center; margin-bottom: 50px; }
     .page-title-box span { color: var(--red); font-weight: 800; letter-spacing: .2em; font-size: 14px; text-transform: uppercase; display: block; margin-bottom: 8px; }
     .page-title-box h1 { font-size: clamp(32px, 4vw, 44px); margin: 0; color: var(--ink); }
     
-    /* 時間軸設計（日期在上方，反向排序） */
     .timeline { position: relative; padding-left: 30px; }
     .timeline::before {
       content: '';
@@ -96,7 +94,6 @@
       border: 3px solid #fff;
       box-shadow: 0 0 0 2px var(--red);
     }
-    /* 日期在上方設計 */
     .timeline-date {
       display: inline-block;
       background: var(--red);
@@ -115,16 +112,21 @@
       line-height: 1.7;
     }
 
-    /* 頁尾 */
     footer { max-width: var(--max); margin: auto; padding: 24px 32px; display: flex; justify-content: space-between; gap: 12px; color: #778091; font-size: 13px; border-top: 1px solid var(--line); margin-top: 40px; }
 
+    @media (max-width: 1000px) {
+      .header-verse { display: none; }
+    }
     @media (max-width: 720px) {
       .site-header { padding: 14px 18px; }
       .brand-img { height: 45px; }
       .brand-name { font-size: 20px; }
-      .nav { overflow-x: auto; }
+      .menu-toggle { display: block; width: 100%; text-align: left; }
+      .nav { display: none; padding: 0 12px 10px; }
+      .nav.open { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .nav a { padding: 10px 12px; }
       .page { padding: 24px 16px; }
-	  .quick-inner { padding: 14px 16px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .quick-inner { padding: 14px 16px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
       footer { flex-direction: column; text-align: center; }
     }
   </style>
@@ -139,22 +141,21 @@
         <p class="brand-tagline"></p>
       </span>
     </a>
-	<div class="header-verse">
+    <div class="header-verse">
       <strong>你們所受的，不是奴僕的心，仍舊害怕；所受的，乃是兒子的心，因此我們呼叫：「阿爸！父！」</strong>
       <span>羅馬書 8:15</span>
     </div>
   </header>
 
   <div class="nav-wrap">
-    <nav class="nav" aria-label="主要導覽">
+    <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mainNav">☰ 網站選單</button>
+    <nav class="nav" id="mainNav" aria-label="主要導覽">
       <a href="index.html">首頁</a>
-      <a href="https://drive.google.com/drive/folders/1S7Nf_9_gBTIczwbqloOxtZMSnGQTeV2y?usp=sharing" target="_blank" rel="noopener noreferrer">電子週報</a>
+      <a href="https://drive.google.com/drive/folders/1PTjXhlB1xKcRxLQ3unLFoQf76g9lxk2V?usp=sharing" target="_blank" rel="noopener noreferrer">電子週報</a>
       <a href="welcome.html">新朋友看這裡</a>
       <a class="active" href="about.html">認識新恩</a>
       <a href="gatherings.html">聚會資訊</a>
-      <!--<a href="index.html#community">牧區與小組</a>-->
       <a href="activities.html">教會活動</a>
-      <!--<a href="index.html#resources">下載中心</a>-->
       <a href="contact.html">聯絡與交通</a>
       <a href="giving.html">奉獻支持</a>
     </nav>
@@ -167,76 +168,54 @@
     </div>
 
     <div class="timeline">
-      <!-- 2026 年 -->
       <div class="timeline-item">
         <span class="timeline-date">2026 / 8 / 2</span>
         <p class="timeline-content">新恩歡慶五週年，兄姊熱心愛主，福音持續擴展，「似乎是似乎一無所有，卻是樣樣都有」。</p>
       </div>
-
-      <!-- 2025 年 -->
       <div class="timeline-item">
         <span class="timeline-date">2025 / 8 / 3</span>
         <p class="timeline-content">新恩歡慶四週年，兄姊熱心愛主，福音持續擴展，「神行新事！」</p>
       </div>
-
-      <!-- 2024 年 -->
       <div class="timeline-item">
         <span class="timeline-date">2024 / 8 / 4</span>
         <p class="timeline-content">新恩歡慶三週年，兄姊熱心愛主，福音持續擴展，「這是耶和華的手所做的！」</p>
       </div>
-
       <div class="timeline-item">
         <span class="timeline-date">2024 / 4 / 15</span>
         <p class="timeline-content">通過「社團法人台灣竹北新恩基督教會」的申請。</p>
       </div>
-
-      <!-- 2023 年 -->
       <div class="timeline-item">
         <span class="timeline-date">2023 / 11 / 15</span>
         <p class="timeline-content">內政部核准協會改名，經過19年主內肢體同心服事，台灣竹北新恩基督教會建立。嶄新一頁，求神帶領新恩完成福音遍傳的使命。</p>
       </div>
-
       <div class="timeline-item">
         <span class="timeline-date">2023 年</span>
         <p class="timeline-content">新恩慢慢穩定成長，成為竹北新社的福音據點。</p>
       </div>
-
-      <!-- 2021 年 -->
       <div class="timeline-item">
         <span class="timeline-date">2021 年 8 月</span>
         <p class="timeline-content">新恩理事會改選，董牧師任理事長，明月牧師為主責牧者，多位關心新恩的同工與北門肢體，一起服事、委身投入。同工同心的服事，展開各樣團契與福音工作。</p>
       </div>
-
       <div class="timeline-item">
         <span class="timeline-date">2021 年 4 月</span>
         <p class="timeline-content">新恩協會由北門聖教會開始接手，並與所有關心新恩的眾同工，齊心整理場地，八月第一週開始主日聚會。</p>
       </div>
-
-      <!-- 2020 年 -->
       <div class="timeline-item">
         <span class="timeline-date">2020 年</span>
         <p class="timeline-content">因支援同工離開，洽詢新竹的教會接手。</p>
       </div>
-
-      <!-- 2010 年 -->
       <div class="timeline-item">
         <span class="timeline-date">2010 年</span>
         <p class="timeline-content">成立社團法人「台灣基督教新恩全人關懷協會」，歷任多位牧者，前往協助發展。</p>
       </div>
-
-      <!-- 2007 年 -->
       <div class="timeline-item">
         <span class="timeline-date">2007 年</span>
         <p class="timeline-content">平妹傳道息勞歸主，捐出遺產作為新恩的基金。</p>
       </div>
-
-      <!-- 2004 年 -->
       <div class="timeline-item">
         <span class="timeline-date">2004 年</span>
         <p class="timeline-content">【中華基督徒地方教會聯合差傳協會】成立「新恩全人成長中心」。由林森南路禮拜堂肢體南下支援迄今。</p>
       </div>
-
-      <!-- 早期萌芽 -->
       <div class="timeline-item">
         <span class="timeline-date">萌芽建立期</span>
         <p class="timeline-content">吳平妹傳道在新竹開拓20年，建立峨眉、芎林、六家三處福音中心，晚年回到故鄉新社，建立最後一個據點。</p>
@@ -246,12 +225,10 @@
   
   <nav class="quick-links" aria-label="快速連結">
     <div class="quick-inner">
-      <a href="https://www.google.com/maps/search/?api=1&query=新竹縣竹北市新民街222巷7號"
-		   target="_blank"
-		   rel="noopener noreferrer">
-		  <span class="quick-icon">⌂</span>
-		  教會地址：新竹縣竹北市新民街222巷7號
-		</a>
+      <a href="https://www.google.com/maps/search/?api=1&query=新竹縣竹北市新民街222巷7號" target="_blank" rel="noopener noreferrer">
+        <span class="quick-icon">⌂</span>
+        教會地址：新竹縣竹北市新民街222巷7號
+      </a>
       <a href="contact.html"><span class="quick-icon">⌖</span>交通資訊</a>
       <a href="contact.html"><span class="quick-icon">☎</span>聯絡我們</a>
       <a href="giving.html" id="giving"><span class="quick-icon">♥</span>奉獻支持</a>
@@ -263,9 +240,20 @@
     <div></div>
     <div>© <span id="year"></span> 竹北新恩基督教會 版權所有</div>
   </footer>
-  <div class="notice" id="notice" role="status" aria-live="polite"></div>
 
   <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const mainNav = document.getElementById("mainNav");
+    if (menuToggle && mainNav) {
+      menuToggle.onclick = () => {
+        const isOpen = mainNav.classList.toggle("open");
+        menuToggle.setAttribute("aria-expanded", String(isOpen));
+      };
+      mainNav.querySelectorAll("a").forEach(link => link.addEventListener("click", () => {
+        mainNav.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+      }));
+    }
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
