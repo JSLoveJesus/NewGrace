@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="竹北新恩基督教會聯絡方式、辦公時間與交通指南（含公車、火車、高鐵及自行開車與停車資訊）。">
+  <meta name="theme-color" content="#202124">
+  <title>聯絡與交通 - 竹北新恩基督教會</title>
+  <style>
+    :root {
+      --red: #e3262e;
+      --ink: #202124;
+      --muted: #667085;
+      --line: #e5e7eb;
+      --paper: #ffffff;
+      --soft: #f6f7f9;
+      --green: #08b52a;
+      --blue: #0872bd;
+      --max: 1440px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; color: var(--ink); background: #fff; font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif; line-height: 1.65; }
+    a { color: inherit; text-decoration: none; }
+    
+    /* 標頭樣式（與首頁一致） */
+    .site-header {
+      max-width: var(--max);
+      margin: auto;
+      padding: 18px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      background: #ffffff;
+      border-bottom: 1px solid var(--line);
+    }
+    .brand { display: flex; align-items: center; gap: 16px; }
+    .brand-img { height: 70px; width: auto; object-fit: contain; display: block; }
+    .brand-name { margin: 0; font-size: clamp(24px, 2.5vw, 36px); letter-spacing: .08em; font-weight: 900; line-height: 1.2; color: #800000; }
+    .brand-tagline { margin: 4px 0 0 2px; color: #606775; letter-spacing: .18em; font-size: 13px; }
+    .header-verse { text-align: right; color: #5b606b; font-size: 14px; max-width: clamp(220px, 30vw, 360px); }
+    .header-verse strong { color: #292d34; display: block; font-size: 15px; font-weight: 600; }
+
+    .nav-wrap { background: var(--ink); border-bottom: 5px solid var(--red); }
+    .nav { max-width: var(--max); margin: auto; padding: 0 20px; display: flex; align-items: stretch; justify-content: space-between; }
+    .nav a { display: block; color: #fff; padding: 13px 15px; white-space: nowrap; font-size: 15px; transition: background .2s ease; }
+    .nav a:hover, .nav a.active { background: var(--red); }
+
+	.quick-links { background: #f3f5f8; margin-top: 0; }
+    .quick-inner { max-width: var(--max); margin: auto; padding: 19px 32px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    .quick-inner a { display: flex; align-items: center; gap: 9px; padding: 6px 12px; color: #444b58; font-weight: 600; }
+    .quick-inner a:hover { color: var(--red); }
+    .quick-icon { font-size: 22px; }
+	
+    /* 頁面主要內容區 */
+    .page { max-width: 1000px; margin: 0 auto; padding: 40px 24px 60px; }
+    .page-title-box { text-align: center; margin-bottom: 40px; }
+    .page-title-box span { color: var(--red); font-weight: 800; letter-spacing: .2em; font-size: 14px; text-transform: uppercase; display: block; margin-bottom: 8px; }
+    .page-title-box h1 { font-size: clamp(32px, 4vw, 44px); margin: 0; color: var(--ink); }
+
+    /* 區塊卡片設計 */
+    .section-card {
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 32px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    }
+    .section-card h2 {
+      font-size: 22px;
+      margin-top: 0;
+      margin-bottom: 20px;
+      color: var(--red);
+      border-bottom: 2px solid var(--line);
+      padding-bottom: 10px;
+    }
+
+    /* 聯絡資訊網格 */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .contact-item {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+    }
+    .contact-item strong {
+      display: block;
+      color: var(--ink);
+      margin-bottom: 6px;
+      font-size: 16px;
+    }
+    .contact-item p {
+      margin: 0;
+      color: #475467;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* 交通清單 */
+    .traffic-list {
+      margin: 0;
+      padding-left: 20px;
+      color: #333;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+    .traffic-list li {
+      margin-bottom: 12px;
+    }
+    .traffic-sublist {
+      margin-top: 6px;
+      margin-bottom: 10px;
+      padding-left: 20px;
+      color: #475467;
+      font-size: 15px;
+    }
+
+    /* 地圖圖片樣式 */
+    .map-image-box {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .map-image-box img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    /* 頁尾 */
+    footer { max-width: var(--max); margin: auto; padding: 24px 32px; display: flex; justify-content: space-between; gap: 12px; color: #778091; font-size: 13px; border-top: 1px solid var(--line); margin-top: 40px; }
+
+    @media (max-width: 850px) {
+      .header-verse { display: none; }
+      .nav { overflow-x: auto; }
+      .page { padding: 24px 16px; }
+	  .quick-inner { padding: 14px 16px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .section-card { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header" id="top">
+    <a class="brand" href="index.html" aria-label="竹北新恩基督教會首頁">
+      <img class="brand-img" src="assets/Header.jpg" alt="竹北新恩基督教會圖示">
+      <span>
+        <h1 class="brand-name">竹北新恩基督教會</h1>
+        <p class="brand-tagline"></p>
+      </span>
+    </a>
+    <div class="header-verse">
+      <strong>你們所受的，不是奴僕的心，仍舊害怕；所受的，乃是兒子的心，因此我們呼叫：「阿爸！父！」</strong>
+      <span>羅馬書 8:15</span>
+    </div>
+  </header>
+
+  <div class="nav-wrap">
+    <nav class="nav" aria-label="主要導覽">
+      <a href="index.html">首頁</a>
+      <a href="https://drive.google.com/drive/folders/1S7Nf_9_gBTIczwbqloOxtZMSnGQTeV2y?usp=sharing" target="_blank" rel="noopener noreferrer">電子週報</a>
+      <a href="welcome.html">新朋友看這裡</a>
+      <a href="about.html">認識新恩</a>
+      <a href="gatherings.html">聚會資訊</a>
+      <!--<a href="index.html#community">牧區與小組</a>-->
+      <a href="activities.html">教會活動</a>
+      <!--<a href="index.html#resources">下載中心</a>-->
+      <a class="active" href="contact.html">聯絡與交通</a>
+      <a href="giving.html">奉獻支持</a>
+    </nav>
+  </div>
+
+  <main class="page">
+    <div class="page-title-box">
+      <span>CONTACT & LOCATION</span>
+      <h1>聯絡與交通資訊</h1>
+    </div>
+
+    <!-- 聯絡部分 -->
+    <div class="section-card">
+      <h2>📌 聯絡資訊</h2>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <strong>傳道同工</strong>
+          <p>林明月牧師</p>
+        </div>
+        <div class="contact-item">
+          <strong>行政同工</strong>
+          <p>陳玉萍、陳秀梅 姊妹</p>
+        </div>
+        <div class="contact-item">
+          <strong>辦公 / 上班時間</strong>
+          <p>二、六：8:30 - 17:00（12:00 - 13:30 午休）<br>日：8:30 - 13:30</p>
+        </div>
+        <div class="contact-item">
+          <strong>教會地址</strong>
+          <p>新竹縣竹北市新民街 222 巷 7 號</p>
+        </div>
+        <div class="contact-item">
+          <strong>聯絡電話</strong>
+          <p>03-5559956</p>
+        </div>
+        <div class="contact-item">
+          <strong>電子郵件</strong>
+          <p>new.graces@gmail.com</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 交通部分 -->
+    <div class="section-card">
+      <h2>🚗 交通指南</h2>
+      
+      <ol class="traffic-list">
+        <li>
+          <strong>搭乘竹北市民免費公車</strong>
+          <ul class="traffic-sublist">
+            <li><strong>60路公車：</strong>搭乘後留意「新民街」站。</li>
+            <li><strong>61路公車：</strong>可查詢是否有適合的班次及下車站點。</li>
+            <li>建議於「新民街」附近站牌下車，再步行前往教會。</li>
+            <li>出發前請確認公車班次及行駛時間（假日班次可能與平日不同），建議使用新竹縣智慧公車查詢即時資訊。</li>
+          </ul>
+        </li>
+        <li>
+          <strong>從竹北火車站出發</strong>
+          <ul class="traffic-sublist">
+            <li>查詢可轉乘的竹北市區公車，選擇往新民街方向的班次，於鄰近教會站牌下車後步行前往。</li>
+          </ul>
+        </li>
+        <li>
+          <strong>從高鐵新竹站出發</strong>
+          <ul class="traffic-sublist">
+            <li>前往公車轉乘區，查詢往竹北市區的公車，轉乘可抵達新民街附近的路線後步行至教會。</li>
+          </ul>
+        </li>
+        <li>
+          <strong>自行開車與停車資訊</strong>
+          <p style="margin: 8px 0; color: #475467;">建議導航至<strong>「竹北P21新社停車場」（新民街212號）</strong>停放，停妥後步行約3分鐘即可抵達教會。</p>
+          
+          <!-- 嵌入地圖圖片 -->
+          <div class="map-image-box">
+            <img src="assets/parking-map.png" alt="竹北新恩基督教會自行開車、簡易位置與停車圖">
+          </div>
+        </li>
+      </ol>
+    </div>
+  </main>
+
+  <nav class="quick-links" aria-label="快速連結">
+    <div class="quick-inner">
+      <a href="https://www.google.com/maps/search/?api=1&query=新竹縣竹北市新民街222巷7號"
+		   target="_blank"
+		   rel="noopener noreferrer">
+		  <span class="quick-icon">⌂</span>
+		  教會地址：新竹縣竹北市新民街222巷7號
+		</a>
+      <a href="contact.html"><span class="quick-icon">⌖</span>交通資訊</a>
+      <a href="contact.html"><span class="quick-icon">☎</span>聯絡我們</a>
+      <a href="giving.html" id="giving"><span class="quick-icon">♥</span>奉獻支持</a>
+    </div>
+  </nav>
+
+  <footer id="contact">
+    <div id="about">† 竹北新恩基督教會</div>
+    <div></div>
+    <div>© <span id="year"></span> 竹北新恩基督教會 版權所有</div>
+  </footer>
+  <div class="notice" id="notice" role="status" aria-live="polite"></div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

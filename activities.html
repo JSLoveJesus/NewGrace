@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="2026 竹北新恩基督教會聖誕系列活動，包含修電器、兒童營、青少年聖誕手作、長青探訪、報佳音與聖誕崇拜。">
+  <meta name="theme-color" content="#202124">
+  <title>教會活動 - 竹北新恩基督教會</title>
+  <style>
+    :root {
+      --red: #b42332;
+      --green: #23734b;
+      --gold: #d5a447;
+      --cream: #fffaf0;
+      --text: #343434;
+      --ink: #202124;
+      --line: #e5e7eb;
+      --max: 1440px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+      color: var(--text);
+      background: #f5f2e9;
+      line-height: 1.8;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* 標頭樣式（與全站一致） */
+    .site-header {
+      max-width: var(--max);
+      margin: auto;
+      padding: 18px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      background: #ffffff;
+      border-bottom: 1px solid var(--line);
+    }
+    .brand { display: flex; align-items: center; gap: 16px; }
+    .brand-img { height: 70px; width: auto; object-fit: contain; display: block; }
+    .brand-name { margin: 0; font-size: clamp(24px, 2.5vw, 36px); letter-spacing: .08em; font-weight: 900; line-height: 1.2; color: #800000; }
+    .brand-tagline { margin: 4px 0 0 2px; color: #606775; letter-spacing: .18em; font-size: 13px; }
+    .header-verse { text-align: right; color: #5b606b; font-size: 14px; max-width: clamp(220px, 30vw, 360px); }
+    .header-verse strong { color: #292d34; display: block; font-size: 15px; font-weight: 600; }
+
+	.quick-links { background: #f3f5f8; margin-top: 0; }
+    .quick-inner { max-width: var(--max); margin: auto; padding: 19px 32px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    .quick-inner a { display: flex; align-items: center; gap: 9px; padding: 6px 12px; color: #444b58; font-weight: 600; }
+    .quick-inner a:hover { color: var(--red); }
+    .quick-icon { font-size: 22px; }
+	
+    .nav-wrap { background: var(--ink); border-bottom: 5px solid var(--red); }
+    .nav { max-width: var(--max); margin: auto; padding: 0 20px; display: flex; align-items: stretch; justify-content: space-between; }
+    .nav a { display: block; color: #fff; padding: 13px 15px; white-space: nowrap; font-size: 15px; transition: background .2s ease; }
+    .nav a:hover, .nav a.active { background: var(--red); }
+
+    /* 活動頁面大標題 Banner */
+    .page-hero {
+      text-align: center;
+      padding: 45px 20px 40px;
+      color: white;
+      background: linear-gradient(135deg, #123d35, #23734b);
+      border-bottom: 6px solid var(--gold);
+    }
+    .page-hero h1 {
+      margin: 12px 0;
+      font-size: clamp(2rem, 5vw, 3rem);
+      line-height: 1.3;
+    }
+    .page-hero p {
+      margin: 8px 0 0;
+      color: #ffebba;
+      font-size: 1.1rem;
+    }
+
+    .container {
+      width: min(1000px, 92%);
+      margin: 35px auto;
+    }
+
+    /* 改為單欄佈局，讓每一個活動都是完整的「左圖右文字」長條區塊 */
+    .events {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .event {
+      background: white;
+      padding: 28px;
+      border-radius: 16px;
+      border-left: 6px solid var(--green);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .event:nth-child(odd) {
+      border-left-color: var(--red);
+    }
+
+    .event-poster-wrap {
+      width: 100%;
+    }
+
+    .event-poster {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      display: block;
+    }
+
+    .event-content h3 {
+      margin: 0 0 4px;
+      color: var(--green);
+      font-size: 1.5rem;
+    }
+
+    .event:nth-child(odd) .event-content h3 {
+      color: var(--red);
+    }
+
+    .event .subtitle {
+      margin: 0 0 16px;
+      color: #88651e;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    .info {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .info li {
+      margin: 8px 0;
+      font-size: 1.05rem;
+    }
+
+    .info strong {
+      color: var(--green);
+    }
+
+    .contact {
+      margin-top: 45px;
+      padding: 30px;
+      border-radius: 16px;
+      background: var(--cream);
+      border: 1px solid #e7d5a5;
+    }
+
+    .contact h2 {
+      margin-top: 0;
+      color: var(--red);
+    }
+
+    .contact a {
+      color: var(--green);
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .contact a:hover {
+      text-decoration: underline;
+    }
+
+    .schedule {
+      margin-top: 45px;
+      overflow-x: auto;
+    }
+
+    .schedule h2 {
+      color: var(--green);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+    }
+
+    th, td {
+      text-align: left;
+      padding: 14px 18px;
+      border-bottom: 1px solid #eee;
+      font-size: 1.05rem;
+    }
+
+    th {
+      color: white;
+      background: var(--green);
+    }
+
+    tbody tr:nth-child(even) {
+      background: #f8f8f2;
+    }
+
+    footer {
+      max-width: var(--max);
+      margin: 40px auto 0;
+      padding: 24px 32px;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      color: #778091;
+      font-size: 13px;
+      border-top: 1px solid var(--line);
+      background: #fff;
+    }
+
+    @media (max-width: 850px) {
+      .header-verse { display: none; }
+      .nav { overflow-x: auto; }
+      /* 手機版改回上下堆疊，圖片在上、文字在下 */
+      .event {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 20px;
+      }
+      .page-hero {
+        padding: 38px 15px;
+      }
+      .contact {
+        padding: 22px;
+      }
+      th, td {
+        padding: 10px;
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header" id="top">
+    <a class="brand" href="index.html" aria-label="竹北新恩基督教會首頁">
+      <img class="brand-img" src="assets/Header.jpg" alt="竹北新恩基督教會圖示">
+      <span>
+        <h1 class="brand-name">竹北新恩基督教會</h1>
+        <p class="brand-tagline"></p>
+      </span>
+    </a>
+    <div class="header-verse">
+      <strong>你們所受的，不是奴僕的心，仍舊害怕；所受的，乃是兒子的心，因此我們呼叫：「阿爸！父！」</strong>
+      <span>羅馬書 8:15</span>
+    </div>
+  </header>
+
+  <div class="nav-wrap">
+    <nav class="nav" aria-label="主要導覽">
+      <a href="index.html">首頁</a>
+      <a href="https://drive.google.com/drive/folders/1PTjXhlB1xKcRxLQ3unLFoQf76g9lxk2V?usp=sharing" target="_blank" rel="noopener noreferrer">電子週報</a>
+      <a href="welcome.html">新朋友看這裡</a>
+      <a href="about.html">認識新恩</a>
+      <a href="gatherings.html">聚會資訊</a>
+      <!--<a href="index.html#community">牧區與小組</a>-->
+      <a class="active" href="activities.html">教會活動</a>
+      <!--<a href="index.html#resources">下載中心</a>-->
+      <a href="contact.html">聯絡與交通</a>
+      <a href="giving.html">奉獻支持</a>
+    </nav>
+  </div>
+
+  <div class="page-hero">
+    <div style="font-size: 1.05rem; letter-spacing: 3px;">2026 聖誕系列活動</div>
+    <h1>竹北新恩基督教會</h1>
+    <p>歡慶救主降生・同心分享主愛</p>
+  </div>
+
+  <main class="container">
+    <section class="events">
+      <!-- 1. 修電器 -->
+      <article class="event">
+        <div class="event-poster-wrap">
+          <img class="event-poster" src="assets/1107.jpg" alt="修電器活動海報">
+        </div>
+        <div class="event-content">
+          <h3>🧰 修電器</h3>
+          <p class="subtitle">重修舊好｜修電器</p>
+          <ul class="info">
+            <li>📅 <strong>日期：</strong>2026 年 11 月 7 日（六）</li>
+            <li>🕒 <strong>時間：</strong>13:00–14:30</li>
+            <li>📍 <strong>地點：</strong>教會一樓</li>
+            <li>🎁 <strong>活動：</strong>家裡電器故障先別丟，拿來修修看！不用錢，交個朋友</li>
+          </ul>
+        </div>
+      </article>
+      
+      <!-- 2. 兒童營 -->
+      <article class="event">
+        <div class="event-poster-wrap">
+          <img class="event-poster" src="assets/1128-1.jpg" alt="兒童營活動海報">
+        </div>
+        <div class="event-content">
+          <h3>🎨 兒童營</h3>
+          <p class="subtitle">我是小廚神｜DIY 聖誕造型披薩</p>
+          <ul class="info">
+            <li>📅 <strong>日期：</strong>2026 年 11 月 28 日（六）</li>
+            <li>🕒 <strong>時間：</strong>10:00–12:45</li>
+            <li>👧 <strong>對象：</strong>小一至小五</li>
+            <li>📍 <strong>地點：</strong>教會一樓</li>
+            <li>🎁 <strong>活動：</strong>敬拜、遊戲、故事、創意聖誕披薩製作、午餐</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- 3. 青少契聖誕樹手作 -->
+      <article class="event">
+        <div class="event-poster-wrap">
+          <img class="event-poster" src="assets/1128-2.jpg" alt="青少契聖誕樹手作活動海報">
+        </div>
+        <div class="event-content">
+          <h3>🌲 青少契</h3>
+          <p class="subtitle">DIY 串珠發光聖誕樹手作</p>
+          <ul class="info">
+            <li>📅 <strong>日期：</strong>2026 年 11 月 28 日（六）</li>
+            <li>🕒 <strong>時間：</strong>13:00–15:00</li>
+            <li>👥 <strong>對象：</strong>小五至高中</li>
+            <li>📍 <strong>地點：</strong>教會一樓</li>
+            <li>🎁 <strong>活動：</strong>敬拜、遊戲、信息、串珠聖誕樹手作、茶點</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- 4. 長青團契聖誕探訪 -->
+      <article class="event">
+        <div class="event-poster-wrap">
+          <img class="event-poster" src="assets/1210.jpg" alt="長青團契聖誕探訪活動海報">
+        </div>
+        <div class="event-content">
+          <h3>❤️ 長青團契</h3>
+          <p class="subtitle">聖誕探訪</p>
+          <ul class="info">
+            <li>📅 <strong>日期：</strong>2026 年 12 月 10 日（四）</li>
+            <li>🕒 <strong>時間：</strong>09:30–12:00</li>
+            <li>👥 <strong>對象：</strong>成人</li>
+            <li>📍 <strong>地點：</strong>馨綠長期養護中心及教會</li>
+            <li>🎁 <strong>活動：</strong>敬拜、遊戲、信息、與長者一起聖誕手工、午餐</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- 5. 青少契戶外福音佈道 -->
+      <article class="event">
+        <div class="event-poster-wrap">
+          <img class="event-poster" src="assets/1212.jpg" alt="青少契聖誕戶外福音佈道活動海報">
+        </div>
+        <div class="event-content">
+          <h3>📣 青少契</h3>
+          <p class="subtitle">聖誕戶外福音佈道</p>
+          <ul class="info">
+            <li>📅 <strong>日期：</strong>2026 年 12 月 12 日（六）</li>
+            <li>🕒 <strong>時間：</strong>13:00–15:00</li>
+            <li>👥 <strong>對象：</strong>小五至高中</li>
+            <li>📍 <strong>集合地點：</strong>教會一樓</li>
+            <li>🎁 <strong>活動：</strong>敬拜、遊戲、信息、向社區發放聖誕小禮物、茶點</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- 6. 聖誕愛無限探訪 -->
+      <article class="event">
+        <div class="event-poster-wrap">
+          <img class="event-poster" src="assets/1219.jpg" alt="聖誕愛無限探訪活動海報">
+        </div>
+        <div class="event-content">
+          <h3>🎵 聖誕愛無限探訪</h3>
+          <p class="subtitle">報佳音・家庭探訪</p>
+          <ul class="info">
+            <li>📅 <strong>日期：</strong>2026 年 12 月 19 日（六）</li>
+            <li>🕒 <strong>時間：</strong>13:00–16:00</li>
+            <li>👥 <strong>對象：</strong>任何人</li>
+            <li>📍 <strong>集合地點：</strong>教會二樓</li>
+            <li>🎁 <strong>活動：</strong>報佳音、家庭探訪及送聖誕禮物</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- 7. 聖誕崇拜 -->
+      <article class="event">
+        <div class="event-poster-wrap">
+          <img class="event-poster" src="assets/1225.jpg" alt="聖誕崇拜活動海報">
+        </div>
+        <div class="event-content">
+          <h3>⛪ 聖誕崇拜</h3>
+          <p class="subtitle">歡慶救主降生</p>
+          <ul class="info">
+            <li>📅 <strong>日期：</strong>2026 年 12 月 25 日（五）</li>
+            <li>🕒 <strong>時間：</strong>10:00–12:30</li>
+            <li>👥 <strong>對象：</strong>任何人</li>
+            <li>📍 <strong>地點：</strong>教會一樓</li>
+            <li>🎁 <strong>活動：</strong>敬拜、信息、洗禮、聖餐、獻詩、抽獎、午餐</li>
+          </ul>
+        </div>
+      </article>
+    </section>
+
+    <section class="schedule">
+      <h2>📅 活動日期一覽</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>日期</th>
+            <th>時間</th>
+            <th>活動名稱</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>11/7（六）</td>
+            <td>13:00–14:30</td>
+            <td>重修舊好：修電器</td>
+          </tr>
+          <tr>
+            <td>11/28（六）</td>
+            <td>10:00–12:45</td>
+            <td>兒童營：我是小廚神</td>
+          </tr>
+          <tr>
+            <td>11/28（六）</td>
+            <td>13:00–15:00</td>
+            <td>青少契：串珠發光聖誕樹手作</td>
+          </tr>
+          <tr>
+            <td>12/10（四）</td>
+            <td>09:30–12:00</td>
+            <td>長青團契：聖誕探訪</td>
+          </tr>
+          <tr>
+            <td>12/12（六）</td>
+            <td>13:00–15:00</td>
+            <td>青少契：聖誕戶外福音佈道</td>
+          </tr>
+          <tr>
+            <td>12/19（六）</td>
+            <td>13:00–16:00</td>
+            <td>聖誕愛無限探訪</td>
+          </tr>
+          <tr>
+            <td>12/25（五）</td>
+            <td>10:00–12:30</td>
+            <td>聖誕崇拜</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="contact">
+      <h2>📞 聯絡我們</h2>
+      <p><strong>聯絡人：</strong>林明月牧師</p>
+      <p>
+        <strong>聯絡電話：</strong>
+        <a href="tel:0919255794">0919-255-794</a>
+      </p>
+      <p><strong>教會地址：</strong>竹北市新民街 222 巷 7 號</p>
+      <p>
+        <a href="https://www.google.com/maps/search/?api=1&query=竹北市新民街222巷7號"
+           target="_blank" rel="noopener noreferrer">
+          📍 在 Google 地圖中查看地址
+        </a>
+      </p>
+    </section>
+  </main>
+  
+  <nav class="quick-links" aria-label="快速連結">
+    <div class="quick-inner">
+      <a href="https://www.google.com/maps/search/?api=1&query=新竹縣竹北市新民街222巷7號"
+		   target="_blank"
+		   rel="noopener noreferrer">
+		  <span class="quick-icon">⌂</span>
+		  教會地址：新竹縣竹北市新民街222巷7號
+		</a>
+      <a href="contact.html"><span class="quick-icon">⌖</span>交通資訊</a>
+      <a href="contact.html"><span class="quick-icon">☎</span>聯絡我們</a>
+      <a href="giving.html" id="giving"><span class="quick-icon">♥</span>奉獻支持</a>
+    </div>
+  </nav>
+
+  <footer id="contact">
+    <div id="about">† 竹北新恩基督教會</div>
+    <div></div>
+    <div>© <span id="year"></span> 竹北新恩基督教會 版權所有</div>
+  </footer>
+  <div class="notice" id="notice" role="status" aria-live="polite"></div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

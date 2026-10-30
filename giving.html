@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="竹北新恩基督教會奉獻支持資訊，包含法人登記、匯款銀行帳號與聖經奉獻教導。">
+  <meta name="theme-color" content="#202124">
+  <title>奉獻支持 - 竹北新恩基督教會</title>
+  <style>
+    :root {
+      --red: #e3262e;
+      --ink: #202124;
+      --muted: #667085;
+      --line: #e5e7eb;
+      --paper: #ffffff;
+      --soft: #f6f7f9;
+      --green: #08b52a;
+      --blue: #0872bd;
+      --max: 1440px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; color: var(--ink); background: #fff; font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif; line-height: 1.65; }
+    a { color: inherit; text-decoration: none; }
+    
+    /* 標頭樣式（與首頁一致） */
+    .site-header {
+      max-width: var(--max);
+      margin: auto;
+      padding: 18px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      background: #ffffff;
+      border-bottom: 1px solid var(--line);
+    }
+    .brand { display: flex; align-items: center; gap: 16px; }
+    .brand-img { height: 70px; width: auto; object-fit: contain; display: block; }
+    .brand-name { margin: 0; font-size: clamp(24px, 2.5vw, 36px); letter-spacing: .08em; font-weight: 900; line-height: 1.2; color: #800000; }
+    .brand-tagline { margin: 4px 0 0 2px; color: #606775; letter-spacing: .18em; font-size: 13px; }
+    .header-verse { text-align: right; color: #5b606b; font-size: 14px; max-width: clamp(220px, 30vw, 360px); }
+    .header-verse strong { color: #292d34; display: block; font-size: 15px; font-weight: 600; }
+
+    .nav-wrap { background: var(--ink); border-bottom: 5px solid var(--red); }
+    .nav { max-width: var(--max); margin: auto; padding: 0 20px; display: flex; align-items: stretch; justify-content: space-between; }
+    .nav a { display: block; color: #fff; padding: 13px 15px; white-space: nowrap; font-size: 15px; transition: background .2s ease; }
+    .nav a:hover, .nav a.active { background: var(--red); }
+
+	.quick-links { background: #f3f5f8; margin-top: 0; }
+    .quick-inner { max-width: var(--max); margin: auto; padding: 19px 32px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    .quick-inner a { display: flex; align-items: center; gap: 9px; padding: 6px 12px; color: #444b58; font-weight: 600; }
+    .quick-inner a:hover { color: var(--red); }
+    .quick-icon { font-size: 22px; }
+	
+    /* 頁面主要內容區 */
+    .page { max-width: 900px; margin: 0 auto; padding: 40px 24px 60px; }
+    .page-title-box { text-align: center; margin-bottom: 40px; }
+    .page-title-box span { color: var(--red); font-weight: 800; letter-spacing: .2em; font-size: 14px; text-transform: uppercase; display: block; margin-bottom: 8px; }
+    .page-title-box h1 { font-size: clamp(32px, 4vw, 44px); margin: 0; color: var(--ink); }
+
+    /* 奉獻資訊卡片設計 */
+    .giving-card {
+      background: #fffdf9;
+      border: 2px solid #f3d5b5;
+      border-radius: 12px;
+      padding: 36px 32px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+      margin-bottom: 30px;
+    }
+    .giving-info-item {
+      margin-bottom: 20px;
+      font-size: 17px;
+      line-height: 1.8;
+      color: #333;
+    }
+    .giving-info-item strong {
+      color: var(--ink);
+    }
+    .account-highlight {
+      font-family: monospace, monospace;
+      background: #fdf2f2;
+      color: var(--red);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: .05em;
+      display: inline-block;
+      margin-top: 4px;
+    }
+    .notice-text {
+      color: #b42318;
+      font-weight: 600;
+      margin-top: 25px;
+      padding-top: 20px;
+      border-top: 1px dashed #e5e7eb;
+      text-align: center;
+      font-size: 16px;
+    }
+
+    /* 經文卡片 */
+    .verse-box {
+      background: linear-gradient(135deg, #faf7ef, #f2eee4);
+      border-radius: 12px;
+      padding: 30px;
+      text-align: center;
+      border: 1px solid #e6dec9;
+    }
+    .verse-content {
+      font-family: "Noto Serif TC", "PMingLiU", serif;
+      font-size: 20px;
+      line-height: 1.8;
+      margin: 0 0 15px;
+      font-weight: 700;
+      color: #3a352c;
+    }
+    .verse-reference {
+      color: var(--muted);
+      margin: 0;
+      font-size: 15px;
+      letter-spacing: .1em;
+    }
+
+    /* 頁尾 */
+    footer { max-width: var(--max); margin: auto; padding: 24px 32px; display: flex; justify-content: space-between; gap: 12px; color: #778091; font-size: 13px; border-top: 1px solid var(--line); margin-top: 40px; }
+
+    @media (max-width: 850px) {
+      .header-verse { display: none; }
+      .nav { overflow-x: auto; }
+      .page { padding: 24px 16px; }
+      .giving-card { padding: 24px 18px; }
+	  .quick-inner { padding: 14px 16px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .account-highlight { font-size: 17px; word-break: break-all; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header" id="top">
+    <a class="brand" href="index.html" aria-label="竹北新恩基督教會首頁">
+      <img class="brand-img" src="assets/Header.jpg" alt="竹北新恩基督教會圖示">
+      <span>
+        <h1 class="brand-name">竹北新恩基督教會</h1>
+        <p class="brand-tagline"></p>
+      </span>
+    </a>
+    <div class="header-verse">
+      <strong>你們所受的，不是奴僕的心，仍舊害怕；所受的，乃是兒子的心，因此我們呼叫：「阿爸！父！」</strong>
+      <span>羅馬書 8:15</span>
+    </div>
+  </header>
+
+  <div class="nav-wrap">
+    <nav class="nav" aria-label="主要導覽">
+      <a href="index.html">首頁</a>
+      <a href="https://drive.google.com/drive/folders/1S7Nf_9_gBTIczwbqloOxtZMSnGQTeV2y?usp=sharing" target="_blank" rel="noopener noreferrer">電子週報</a>
+      <a href="welcome.html">新朋友看這裡</a>
+      <a href="about.html">認識新恩</a>
+      <a href="gatherings.html">聚會資訊</a>
+      <!--<a href="index.html#community">牧區與小組</a>-->
+      <a href="activities.html">教會活動</a>
+      <!--<a href="index.html#resources">下載中心</a>-->
+      <a href="contact.html">聯絡與交通</a>
+      <a class="active" href="giving.html">奉獻支持</a>
+    </nav>
+  </div>
+
+  <main class="page">
+    <div class="page-title-box">
+      <span>GIVING & SUPPORT</span>
+      <h1>奉獻支持</h1>
+    </div>
+
+    <div class="giving-card">
+      <div class="giving-info-item">
+        <strong>法人登記：</strong>第 24 冊第 49 頁第 1173 號
+      </div>
+      <div class="giving-info-item">
+        <strong>統一編號：</strong>26653223
+      </div>
+      <div class="giving-info-item">
+        <strong>奉獻方式 / 金融機構：</strong>台灣土地銀行 南港分行（代號 005）<br>
+        <span class="account-highlight">004001158754</span>
+      </div>
+      <div class="giving-info-item">
+        <strong>戶名：</strong>社團法人台灣竹北新恩基督教會
+      </div>
+      
+      <div class="notice-text">
+        * 如用 ATM 轉帳、銀行轉帳奉獻者，請務必於轉帳後來電通知本會，謝謝 *
+      </div>
+    </div>
+
+    <div class="verse-box">
+      <p class="verse-content">「萬軍之耶和華說：你們要將當納的十分之一全然送入倉庫，使我家有糧，以此試試我，是否為你們敞開天上的窗戶，傾福與你們，甚至無處可容。」</p>
+      <p class="verse-reference">〈瑪拉基書 3:10〉</p>
+    </div>
+  </main>
+
+  <nav class="quick-links" aria-label="快速連結">
+    <div class="quick-inner">
+      <a href="https://www.google.com/maps/search/?api=1&query=新竹縣竹北市新民街222巷7號"
+		   target="_blank"
+		   rel="noopener noreferrer">
+		  <span class="quick-icon">⌂</span>
+		  教會地址：新竹縣竹北市新民街222巷7號
+		</a>
+      <a href="contact.html"><span class="quick-icon">⌖</span>交通資訊</a>
+      <a href="contact.html"><span class="quick-icon">☎</span>聯絡我們</a>
+      <a href="giving.html" id="giving"><span class="quick-icon">♥</span>奉獻支持</a>
+    </div>
+  </nav>
+
+  <footer id="contact">
+    <div id="about">† 竹北新恩基督教會</div>
+    <div></div>
+    <div>© <span id="year"></span> 竹北新恩基督教會 版權所有</div>
+  </footer>
+  <div class="notice" id="notice" role="status" aria-live="polite"></div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

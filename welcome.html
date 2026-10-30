@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="歡迎來到竹北新恩基督教會！為第一次來教會的新朋友準備的貼心指南與常見問題。">
+  <meta name="theme-color" content="#202124">
+  <title>新朋友看這裡 - 竹北新恩基督教會</title>
+  <style>
+    :root {
+      --red: #e3262e;
+      --ink: #202124;
+      --muted: #667085;
+      --line: #e5e7eb;
+      --paper: #ffffff;
+      --soft: #f6f7f9;
+      --green: #08b52a;
+      --blue: #0872bd;
+      --max: 1440px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; color: var(--ink); background: #fff; font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif; line-height: 1.65; }
+    a { color: inherit; text-decoration: none; }
+    
+    /* 標頭樣式（與首頁一致） */
+    .site-header {
+      max-width: var(--max);
+      margin: auto;
+      padding: 18px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      background: #ffffff;
+      border-bottom: 1px solid var(--line);
+    }
+    .brand { display: flex; align-items: center; gap: 16px; }
+    .brand-img { height: 70px; width: auto; object-fit: contain; display: block; }
+    .brand-name { margin: 0; font-size: clamp(24px, 2.5vw, 36px); letter-spacing: .08em; font-weight: 900; line-height: 1.2; color: #800000; }
+    .brand-tagline { margin: 4px 0 0 2px; color: #606775; letter-spacing: .18em; font-size: 13px; }
+    
+	.header-verse { text-align: right; color: #5b606b; font-size: 14px; max-width: clamp(220px, 30vw, 360px); }
+    .header-verse strong { color: #292d34; display: block; font-size: 15px; font-weight: 600; }
+
+    .nav-wrap { background: var(--ink); border-bottom: 5px solid var(--red); }
+    .nav { max-width: var(--max); margin: auto; padding: 0 20px; display: flex; align-items: stretch; justify-content: space-between; }
+    .nav a { display: block; color: #fff; padding: 13px 15px; white-space: nowrap; font-size: 15px; transition: background .2s ease; }
+    .nav a:hover, .nav a.active { background: var(--red); }
+	.quick-links { background: #f3f5f8; margin-top: 0; }
+    .quick-inner { max-width: var(--max); margin: auto; padding: 19px 32px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    .quick-inner a { display: flex; align-items: center; gap: 9px; padding: 6px 12px; color: #444b58; font-weight: 600; }
+    .quick-inner a:hover { color: var(--red); }
+    .quick-icon { font-size: 22px; }
+
+    /* 頁面主要內容區 */
+    .page { max-width: 1000px; margin: 0 auto; padding: 40px 24px 60px; }
+    .page-title-box { text-align: center; margin-bottom: 40px; }
+    .page-title-box span { color: var(--red); font-weight: 800; letter-spacing: .2em; font-size: 14px; text-transform: uppercase; display: block; margin-bottom: 8px; }
+    .page-title-box h1 { font-size: clamp(32px, 4vw, 44px); margin: 0; color: var(--ink); }
+
+    /* 歡迎橫幅卡片 */
+    .welcome-hero {
+      background: linear-gradient(135deg, #fff9f0, #fff);
+      border: 2px solid #f3d5b5;
+      border-radius: 12px;
+      padding: 36px;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .welcome-hero h2 {
+      font-size: 28px;
+      color: #800000;
+      margin-top: 0;
+      margin-bottom: 12px;
+    }
+    .welcome-hero p {
+      font-size: 18px;
+      color: #475467;
+      margin: 0;
+      line-height: 1.8;
+    }
+
+    /* 問答清單卡片 */
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    .faq-card {
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 24px;
+    }
+    .faq-card h3 {
+      font-size: 20px;
+      color: var(--ink);
+      margin-top: 0;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .faq-card h3 span {
+      color: var(--red);
+      flex-shrink: 0;
+    }
+    .faq-card p, .faq-card ul {
+      margin: 0;
+      color: #475467;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+    .faq-card a {
+      color: var(--blue);
+      text-decoration: underline;
+    }
+
+    /* 聯絡區塊 */
+    .contact-box {
+      margin-top: 40px;
+      background: #faf7ef;
+      border: 1px solid #e6dec9;
+      border-radius: 10px;
+      padding: 24px;
+      text-align: center;
+    }
+    .contact-box h3 {
+      margin-top: 0;
+      color: #3a352c;
+    }
+    .contact-box p {
+      margin: 0;
+      color: #475467;
+    }
+    .contact-box a {
+      color: var(--blue);
+      font-weight: 600;
+    }
+
+    /* 頁尾 */
+    footer { max-width: var(--max); margin: auto; padding: 24px 32px; display: flex; justify-content: space-between; gap: 12px; color: #778091; font-size: 13px; border-top: 1px solid var(--line); margin-top: 40px; }
+
+    @media (max-width: 850px) {
+      .header-verse { display: none; }
+      .nav { overflow-x: auto; }
+      .page { padding: 24px 16px; }
+	  .quick-inner { padding: 14px 16px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .welcome-hero { padding: 24px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header" id="top">
+    <a class="brand" href="index.html" aria-label="竹北新恩基督教會首頁">
+      <img class="brand-img" src="assets/Header.jpg" alt="竹北新恩基督教會圖示">
+      <span>
+        <h1 class="brand-name">竹北新恩基督教會</h1>
+        <p class="brand-tagline"></p>
+      </span>
+    </a>
+    <div class="header-verse">
+      <strong>你們所受的，不是奴僕的心，仍舊害怕；所受的，乃是兒子的心，因此我們呼叫：「阿爸！父！」</strong>
+      <span>羅馬書 8:15</span>
+    </div>
+  </header>
+
+  <div class="nav-wrap">
+    <nav class="nav" aria-label="主要導覽">
+      <a href="index.html">首頁</a>
+      <a href="https://drive.google.com/drive/folders/1PTjXhlB1xKcRxLQ3unLFoQf76g9lxk2V?usp=sharing" target="_blank" rel="noopener noreferrer">電子週報</a>
+      <a class="active" href="welcome.html">新朋友看這裡</a>
+	  <a href="about.html">認識新恩</a>
+      <a href="gatherings.html">聚會資訊</a>
+      <!--<a href="index.html#community">牧區與小組</a>-->
+      <a href="activities.html">教會活動</a>
+      <!--<a href="index.html#resources">下載中心</a>-->
+      <a href="contact.html">聯絡與交通</a>
+      <a href="giving.html">奉獻支持</a>
+    </nav>
+  </div>
+
+  <main class="page">
+    <div class="page-title-box">
+      <span>WELCOME HOME</span>
+      <h1>新朋友看這裡</h1>
+    </div>
+
+    <div class="welcome-hero">
+      <h2>歡迎來到竹北新恩基督教會！</h2>
+      <p>很高興能與您相遇！無論您是剛接觸信仰、正在尋找教會，或是搬到竹北的新鄰居，新恩都誠摯地歡迎您把這裡當作屬靈的家。</p>
+    </div>
+
+    <div class="faq-grid">
+      <div class="faq-card">
+        <h3><span>Q：</span>竹北新恩基督教會在哪裡？</h3>
+        <p>我們的地址是新竹縣竹北市新民街 222 巷 7 號，請詳見 <a href="contact.html">【交通資訊】</a>。</p>
+      </div>
+
+      <div class="faq-card">
+        <h3><span>Q：</span>停車方便嗎？</h3>
+        <p>請詳見 <a href="contact.html">【交通資訊】</a>。</p>
+      </div>
+
+      <div class="faq-card">
+        <h3><span>Q：</span>這是一個正派的教會嗎？</h3>
+        <p>竹北新恩基督教會是充滿活力的教會。我們極力教導忠於聖經真理的信仰，並協助弟兄姊妹突破困境、造就美善之生命與家庭。<br>
+        我們是政府立案之社團法人，有完善之會計制度，收支均受會計師與政府監督。弟兄姊妹的奉獻在年度結束後，將會收到可供抵稅之奉獻證明。<br>
+        教會奉獻收入除做教會人事與行政費用外，並盡神託付給我們的本分，盡力宣揚基督的福音、投入社區關懷工作、扶持海內外之教會與福音機構。</p>
+      </div>
+
+      <div class="faq-card">
+        <h3><span>Q：</span>我還不是基督徒，剛到教會該注意些什麼事？</h3>
+        <p>新恩最為人所稱道的特色就是『溫暖』，就像一個大家庭一樣。你不必特別做些什麼，只要帶著一顆真誠的心，來追求信仰，成為我們的好朋友。</p>
+      </div>
+
+      <div class="faq-card">
+        <h3><span>Q：</span>在聚會中被公開介紹讓我覺得不自在，可否讓我安安靜靜坐著就好？</h3>
+        <p>我們很希望多認識你，但是也尊重你的感覺。你只要在填寫新朋友資料時註明一下，我們就不會介紹你了。</p>
+      </div>
+
+      <div class="faq-card">
+        <h3><span>Q：</span>第一次到教會都要填寫個人資料，請問你們會怎麼處理這些資料？</h3>
+        <p>我們尊重每一個人的隱私，只有專職的傳道人和少數負責關心新朋友的弟兄姊妹才會看到你的資料。他們都受過適當的訓練，承諾不會將這些資料透露給其他人知道。<br>
+        當然，如果你還是不放心，有些資料可以不填寫。</p>
+      </div>
+
+      <div class="faq-card">
+        <h3><span>Q：</span>參加聚會應該怎麼穿比較得體？</h3>
+        <p>我們沒有任何服裝規定，教會也一向教導不要以外表評斷一個人的價值。<br>
+        但教會活動都是公開場合，建議你的穿著只要適合當時的節令、不要讓其他人覺得不自在（例如，太過暴露），就可以了。</p>
+      </div>
+
+      <div class="faq-card">
+        <h3><span>Q：</span>我想參加主日崇拜，但是怕孩子吵到別人，怎麼辦？</h3>
+        <p>我們有非常精采的兒童主日學課程，以及富有愛心的老師，只要你的孩子滿 2 歲半，都歡迎參加。<br>
+        如果孩子還離不開爸媽，你也可以陪他一段時間，等他熟悉環境之後再離開。</p>
+      </div>
+
+      <div class="faq-card">
+        <h3><span>Q：</span>我的孩子正值青少年，有適合他們的聚會嗎？</h3>
+        <p>我們深信這個年紀的孩子，需要在信仰與學業上，積極的塑造他們。<br>
+        每週六都有國、高中生的聚會，由輔導群陪伴他們走過這一段精彩又刺激的年少歲月。<br>
+        我們也不定期舉辦青少年父母成長聚會，幫助父母與孩子一同成長。<br>
+        國、高中生聚會時間，請參見 <a href="gatherings.html">【聚會時間表】</a>。</p>
+      </div>
+
+      <div class="faq-card">
+        <h3><span>Q：</span>我是個新手媽媽，有沒有適合我的成長團體？</h3>
+        <p>歡迎參加週二早上的知心團契，有深入的親子與夫妻議題分享，並有專職保姆照顧孩子。即使您還不是基督徒也很歡迎。</p>
+      </div>
+
+      <div class="faq-card">
+        <h3><span>Q：</span>我的父母年紀大，有沒有適合他們的聚會？</h3>
+        <p>每週四早上有長青團契的聚會，一起唱詩歌，查經或是健康講座。還有行程輕鬆的郊遊，保證長輩們樂此不疲。</p>
+      </div>
+    </div>
+
+    <div class="contact-box">
+      <h3>還有其他問題嗎？</h3>
+      <p>歡迎來信詢問，Email: <a href="mailto:new.graces@gmail.com">new.graces@gmail.com</a></p>
+    </div>
+  </main>
+  
+  <nav class="quick-links" aria-label="快速連結">
+    <div class="quick-inner">
+      <a href="https://www.google.com/maps/search/?api=1&query=新竹縣竹北市新民街222巷7號"
+		   target="_blank"
+		   rel="noopener noreferrer">
+		  <span class="quick-icon">⌂</span>
+		  教會地址：新竹縣竹北市新民街222巷7號
+		</a>
+      <a href="contact.html"><span class="quick-icon">⌖</span>交通資訊</a>
+      <a href="contact.html"><span class="quick-icon">☎</span>聯絡我們</a>
+      <a href="giving.html" id="giving"><span class="quick-icon">♥</span>奉獻支持</a>
+    </div>
+  </nav>
+
+  <footer id="contact">
+    <div id="about">† 竹北新恩基督教會</div>
+    <div></div>
+    <div>© <span id="year"></span> 竹北新恩基督教會 版權所有</div>
+  </footer>
+  <div class="notice" id="notice" role="status" aria-live="polite"></div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

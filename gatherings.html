@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="竹北新恩基督教會各項聚會時間表，包含主日崇拜、各團契與禱告會資訊。">
+  <meta name="theme-color" content="#202124">
+  <title>聚會資訊 - 竹北新恩基督教會</title>
+  <style>
+    :root {
+      --red: #e3262e;
+      --ink: #202124;
+      --muted: #667085;
+      --line: #e5e7eb;
+      --paper: #ffffff;
+      --soft: #f6f7f9;
+      --green: #08b52a;
+      --blue: #0872bd;
+      --max: 1440px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; color: var(--ink); background: #fff; font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif; line-height: 1.65; }
+    a { color: inherit; text-decoration: none; }
+    
+    /* 標頭樣式（與首頁一致） */
+    .site-header {
+      max-width: var(--max);
+      margin: auto;
+      padding: 18px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      background: #ffffff;
+      border-bottom: 1px solid var(--line);
+    }
+    .brand { display: flex; align-items: center; gap: 16px; }
+    .brand-img { height: 70px; width: auto; object-fit: contain; display: block; }
+    .brand-name { margin: 0; font-size: clamp(24px, 2.5vw, 36px); letter-spacing: .08em; font-weight: 900; line-height: 1.2; color: #800000; }
+    .brand-tagline { margin: 4px 0 0 2px; color: #606775; letter-spacing: .18em; font-size: 13px; }
+    .header-verse { text-align: right; color: #5b606b; font-size: 14px; max-width: clamp(220px, 30vw, 360px); }
+    .header-verse strong { color: #292d34; display: block; font-size: 15px; font-weight: 600; }
+
+    .nav-wrap { background: var(--ink); border-bottom: 5px solid var(--red); }
+    .nav { max-width: var(--max); margin: auto; padding: 0 20px; display: flex; align-items: stretch; justify-content: space-between; }
+    .nav a { display: block; color: #fff; padding: 13px 15px; white-space: nowrap; font-size: 15px; transition: background .2s ease; }
+    .nav a:hover, .nav a.active { background: var(--red); }
+
+	.quick-links { background: #f3f5f8; margin-top: 0; }
+    .quick-inner { max-width: var(--max); margin: auto; padding: 19px 32px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    .quick-inner a { display: flex; align-items: center; gap: 9px; padding: 6px 12px; color: #444b58; font-weight: 600; }
+    .quick-inner a:hover { color: var(--red); }
+    .quick-icon { font-size: 22px; }
+	
+    /* 頁面主要內容區 */
+    .page { max-width: 1100px; margin: 0 auto; padding: 40px 24px 60px; }
+    .page-title-box { text-align: center; margin-bottom: 40px; }
+    .page-title-box span { color: var(--red); font-weight: 800; letter-spacing: .2em; font-size: 14px; text-transform: uppercase; display: block; margin-bottom: 8px; }
+    .page-title-box h1 { font-size: clamp(32px, 4vw, 44px); margin: 0; color: var(--ink); }
+
+    /* 表格設計 */
+    .table-container {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    }
+    .schedule-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 16px;
+    }
+    .schedule-table th {
+      background: var(--ink);
+      color: #fff;
+      font-weight: 700;
+      padding: 16px 20px;
+      letter-spacing: .05em;
+    }
+    .schedule-table td {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--line);
+      color: #333;
+    }
+    .schedule-table tr:last-child td {
+      border-bottom: none;
+    }
+    .schedule-table tr:nth-child(even) {
+      background: var(--soft);
+    }
+    .schedule-table tr:hover {
+      background: #fdf2f2; /* 滑鼠移上去時帶有淡淡的紅調 */
+    }
+    .time-badge {
+      display: inline-block;
+      background: #eef2f6;
+      color: #1d2939;
+      font-weight: 600;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    /* 頁尾 */
+    footer { max-width: var(--max); margin: auto; padding: 24px 32px; display: flex; justify-content: space-between; gap: 12px; color: #778091; font-size: 13px; border-top: 1px solid var(--line); margin-top: 40px; }
+
+    @media (max-width: 850px) {
+      .header-verse { display: none; }
+      .nav { overflow-x: auto; }
+      .page { padding: 24px 16px; }
+      /* 手機版表格轉為響應式捲動或卡片式，確保不變形 */
+      .table-container { overflow-x: auto; }
+	  .quick-inner { padding: 14px 16px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .schedule-table { min-width: 650px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header" id="top">
+    <a class="brand" href="index.html" aria-label="竹北新恩基督教會首頁">
+      <img class="brand-img" src="assets/Header.jpg" alt="竹北新恩基督教會圖示">
+      <span>
+        <h1 class="brand-name">竹北新恩基督教會</h1>
+        <p class="brand-tagline"></p>
+      </span>
+    </a>
+    <div class="header-verse">
+      <strong>你們所受的，不是奴僕的心，仍舊害怕；所受的，乃是兒子的心，因此我們呼叫：「阿爸！父！」</strong>
+      <span>羅馬書 8:15</span>
+    </div>
+  </header>
+
+  <div class="nav-wrap">
+    <nav class="nav" aria-label="主要導覽">
+      <a href="index.html">首頁</a>
+      <a href="https://drive.google.com/drive/folders/1S7Nf_9_gBTIczwbqloOxtZMSnGQTeV2y?usp=sharing" target="_blank" rel="noopener noreferrer">電子週報</a>
+      <a href="welcome.html">新朋友看這裡</a>
+      <a href="about.html">認識新恩</a>
+      <a class="active" href="gatherings.html">聚會資訊</a>
+      <!--<a href="index.html#community">牧區與小組</a>-->
+      <a href="activities.html">教會活動</a>
+      <!--<a href="index.html#resources">下載中心</a>-->
+      <a href="contact.html">聯絡與交通</a>
+      <a href="giving.html">奉獻支持</a>
+    </nav>
+  </div>
+
+  <main class="page">
+    <div class="page-title-box">
+      <span>GATHERING TIMES</span>
+      <h1>聚會資訊與時間表</h1>
+    </div>
+
+    <div class="table-container">
+      <table class="schedule-table">
+        <thead>
+          <tr>
+            <th>聚會內容</th>
+            <th>時間</th>
+            <th>地點</th>
+            <th>負責同工</th>
+            <th>備註</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>會前禱告會 / 主日崇拜</strong></td>
+            <td><span class="time-badge">9:40 / 10:00 (日)</span></td>
+            <td>教會一樓</td>
+            <td>林明月牧師</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td><strong>門訓 - 主禱文</strong></td>
+            <td><span class="time-badge">8:30 - 9:30 (日)</span>/td>
+            <td>教會二樓</td>
+            <td>林明月牧師</td>
+            <td>寒暑停</td>
+          </tr>
+          <tr>
+            <td><strong>兒主</strong></td>
+            <td><span class="time-badge">10:00 (日)</span>/td>
+            <td>教會三樓</td>
+            <td>張玉娃姊妹</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td><strong>知心團契</strong></td>
+            <td><span class="time-badge">10:00 (二)</span</td>
+            <td>教會一樓</td>
+            <td>陳秀梅姊妹</td>
+            <td>寒暑停</td>
+          </tr>
+          <tr>
+            <td><strong>成人團契</strong></td>
+            <td><span class="time-badge">19:00 (三)</span></td>
+            <td>牧師家 / 姊妹家</td>
+            <td>林明月牧師</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td><strong>長青團契</strong></td>
+            <td><span class="time-badge">09:30 (四)</span></td>
+            <td>教會一樓</td>
+            <td>黃元鈞弟兄</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td><strong>週末兒童營</strong></td>
+            <td><span class="time-badge">10:00 (六)</span></td>
+            <td>教會二樓</td>
+            <td>黃湘云姊妹</td>
+            <td>寒暑停</td>
+          </tr>
+          <tr>
+            <td><strong>青少年團契</strong></td>
+            <td><span class="time-badge">13:00 (六)</span></td>
+            <td>教會一樓</td>
+            <td>李傳道</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td><strong>青年團契</strong></td>
+            <td><span class="time-badge">主日崇拜後 (日)</span></td>
+            <td>教會二樓</td>
+            <td>林明月牧師</td>
+            <td>每月第 3 週 / 不定時</td>
+          </tr>
+          <tr>
+            <td><strong>禱告會</strong></td>
+            <td><span class="time-badge">18:30 (六)</span></td>
+            <td>教會一樓</td>
+            <td>陳慧華姊妹</td>
+            <td>每月第 3 週</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <nav class="quick-links" aria-label="快速連結">
+    <div class="quick-inner">
+      <a href="https://www.google.com/maps/search/?api=1&query=新竹縣竹北市新民街222巷7號"
+		   target="_blank"
+		   rel="noopener noreferrer">
+		  <span class="quick-icon">⌂</span>
+		  教會地址：新竹縣竹北市新民街222巷7號
+		</a>
+      <a href="contact.html"><span class="quick-icon">⌖</span>交通資訊</a>
+      <a href="contact.html"><span class="quick-icon">☎</span>聯絡我們</a>
+      <a href="giving.html" id="giving"><span class="quick-icon">♥</span>奉獻支持</a>
+    </div>
+  </nav>
+
+  <footer id="contact">
+    <div id="about">† 竹北新恩基督教會</div>
+    <div></div>
+    <div>© <span id="year"></span> 竹北新恩基督教會 版權所有</div>
+  </footer>
+  <div class="notice" id="notice" role="status" aria-live="polite"></div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

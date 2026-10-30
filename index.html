@@ -24,40 +24,43 @@
     a { color: inherit; text-decoration: none; }
     button { font: inherit; cursor: pointer; }
     
-    /* --- 修改後的 Header 樣式 --- */
+    /* --- 標頭樣式：圖片 + 文字並排 --- */
     .site-header {
       max-width: var(--max);
       margin: auto;
-      padding: 22px 32px 18px;
+      padding: 18px 32px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 24px;
-      min-height: 132px;
-      /* 設定背景圖片為您提供的圖片 */
-      background-image: url('assets/Header.jpg');
-      /* 將背景定位在「只有一部分」的位置 (聖經圖案) */
-      background-position: left 20% center; /* 向左偏移 20%，垂直置中 */
-      background-repeat: no-repeat;
-      /* 確保背景覆蓋整個 header 區域 */
-      background-size: cover; 
+      background: #ffffff;
+      border-bottom: 1px solid var(--line);
     }
 
-    /* 為了讓文字在背景圖上清晰可見，增加陰影或半透明遮罩 (選用，視實際效果調整) */
-    .brand-name, .header-verse {
-      /* 給文字加上一層淡淡的白色陰影，避免背景干擾閱讀 */
-      text-shadow: 0 0 3px rgba(255, 255, 255, 0.8), 0 0 5px rgba(0, 0, 0, 0.3);
-    }
-
-    .brand { display: flex; align-items: center; gap: 14px; }
+    .brand { display: flex; align-items: center; gap: 16px; }
     
-    /* 隱藏原本的紅色十字架符號 (依據您的要求) */
+    .brand-img {
+      height: 70px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+    }
+    
     .cross { display: none; } 
     
-    .brand-name { margin: 0; font-size: clamp(26px, 3vw, 42px); letter-spacing: .08em; font-weight: 900; line-height: 1.2; color: #800000; /* 設定文字顏色為深紅色，與背景圖上的字色呼應 */ }
-    .brand-tagline { margin: 8px 0 0 2px; color: #606775; letter-spacing: .18em; font-size: 14px; }
-    .header-verse { text-align: right; color: #5b606b; font-size: 14px; max-width: 340px; }
+    .brand-name { 
+      margin: 0; 
+      font-size: clamp(24px, 2.5vw, 36px); 
+      letter-spacing: .08em; 
+      font-weight: 900; 
+      line-height: 1.2; 
+      color: #800000;
+    }
+    .brand-tagline { margin: 4px 0 0 2px; color: #606775; letter-spacing: .18em; font-size: 13px; }
+    .cross { color: var(--red); font-size: 66px; font-weight: 900; line-height: .9; font-family: Georgia, serif; }
+    .header-verse { text-align: right; color: #5b606b; font-size: 14px; max-width: clamp(220px, 30vw, 360px); }
     .header-verse strong { color: #292d34; display: block; font-size: 15px; font-weight: 600; }
+    
     .nav-wrap { background: var(--ink); border-bottom: 5px solid var(--red); }
     .nav { max-width: var(--max); margin: auto; padding: 0 20px; display: flex; align-items: stretch; justify-content: space-between; }
     .nav a { display: block; color: #fff; padding: 13px 15px; white-space: nowrap; font-size: 15px; transition: background .2s ease; }
@@ -111,7 +114,6 @@
     .notice.show { display: block; animation: rise .25s ease-out; }
     @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     @media (max-width: 1000px) {
-      .site-header { min-height: 112px; }
       .header-verse { display: none; }
       .nav { flex-wrap: wrap; justify-content: flex-start; }
       .nav a { padding: 12px 13px; }
@@ -120,10 +122,9 @@
       .news-grid { gap: 12px; }
     }
     @media (max-width: 720px) {
-      .site-header { padding: 18px 18px; min-height: auto; }
-      .cross { font-size: 52px; }
-      .brand-name { font-size: 27px; }
-      .brand-tagline { font-size: 12px; letter-spacing: .1em; }
+      .site-header { padding: 14px 18px; }
+      .brand-img { height: 50px; }
+      .brand-name { font-size: 22px; }
       .menu-toggle { display: block; width: 100%; text-align: left; }
       .nav { display: none; padding: 0 12px 10px; }
       .nav.open { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -147,33 +148,33 @@
 </head>
 <body>
   <header class="site-header" id="top">
-    <a class="brand" href="#top" aria-label="竹北新恩基督教會首頁">
-      <!-- 原本的 cross span 仍然存在，但在 CSS 中已被隱藏 (display: none) -->
-      <span class="cross" aria-hidden="true">†</span>
-      <span>
+    <a class="brand" href="index.html" aria-label="竹北新恩基督教會首頁">
+      <img class="brand-img" src="assets/Header.jpg" alt="竹北新恩基督教會圖示">
+	  <span>
         <h1 class="brand-name">竹北新恩基督教會</h1>
         <p class="brand-tagline"></p>
       </span>
     </a>
     <div class="header-verse">
-      <strong>「你們要在主裡常常喜樂，我再說，你們要喜樂。」</strong>
-      <span>腓立比書 4:4</span>
+      <strong>你們所受的，不是奴僕的心，仍舊害怕；所受的，乃是兒子的心，因此我們呼叫：「阿爸！父！」</strong>
+      <span>羅馬書 8:15</span>
     </div>
   </header>
 
   <div class="nav-wrap">
     <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mainNav">☰ 網站選單</button>
+    <!-- 已將導覽列中「認識新恩」與「新恩事工」正確指向 about.html -->
     <nav class="nav" id="mainNav" aria-label="主要導覽">
-      <a class="active" href="#top">首頁</a>
-      <a href="#news">電子週報</a>
-      <a href="#community">新朋友看這裡</a>
-      <a href="#about">認識新恩</a>
-      <a href="#gatherings">新恩課程</a>
-      <a href="#community">牧區與小組</a>
-      <a href="#about">新恩事工</a>
-      <a href="#resources">下載中心</a>
-      <a href="#contact">聯絡與交通</a>
-      <a href="#giving">奉獻支持</a>
+      <a class="active" href="index.html">首頁</a>
+      <a href="https://drive.google.com/drive/folders/1S7Nf_9_gBTIczwbqloOxtZMSnGQTeV2y?usp=sharing" target="_blank" rel="noopener noreferrer">電子週報</a>
+      <a href="welcome.html">新朋友看這裡</a>
+      <a href="about.html">認識新恩</a>
+      <a href="gatherings.html">聚會資訊</a>
+      <!--<a href="index.html#community">牧區與小組</a>-->
+      <a href="activities.html">教會活動</a>
+      <!--<a href="index.html#resources">下載中心</a>-->
+      <a href="contact.html">聯絡與交通</a>
+      <a href="giving.html">奉獻支持</a>
     </nav>
   </div>
 
@@ -185,7 +186,7 @@
             <p class="eyebrow" id="heroEyebrow">竹北新恩・最新消息</p>
             <h2 id="heroTitle">電子週報</h2>
             <p id="heroSubtitle">最新消息・教會活動・信息分享</p>
-            <a class="primary-btn" id="heroLink" href="#news">查看最新週報 <span aria-hidden="true">›</span></a>
+            <a class="primary-btn" id="heroLink" href="assets/最新週報.pdf" target="_blank" rel="noopener noreferrer">查看最新週報 <span aria-hidden="true">›</span></a>
           </div>
           <div class="hero-dots" aria-label="首頁主視覺切換">
             <button type="button" data-slide="0" aria-label="顯示第 1 張" aria-pressed="true"></button>
@@ -196,20 +197,20 @@
 
         <div class="section-head" id="news">
           <h2>最新消息</h2>
-          <a class="more" href="#news-list" data-notice="最新消息列表可以在後續接上正式公告內容。">查看更多 ›</a>
+          <!--<a class="more" href="#news-list" data-notice="最新消息列表可以在後續接上正式公告內容。">查看更多 ›</a>-->
         </div>
         <div class="news-grid" id="news-list">
-          <a class="news-card" href="#news" data-notice="請將這則示範公告替換成教會最新的聚會時間公告。">
+          <a class="news-card" href="assets/最新週報.pdf" target="_blank" rel="noopener noreferrer">
             <img class="news-image" src="https://images.unsplash.com/photo-1504052434569-70ad5836ab65?auto=format&fit=crop&w=700&q=80" alt="桌上的聖經與咖啡">
-            <div class="news-body"><span class="date">最新公告</span><h3>主日崇拜及聚會資訊</h3><p>歡迎來到竹北新恩教會，一起敬拜、團契與成長。</p></div>
+            <div class="news-body"><span class="date">最新公告</span><h3>主日崇拜資訊</h3><p>歡迎來到竹北新恩教會，一起敬拜、團契與成長。</p></div>
           </a>
-          <a class="news-card" href="#news" data-notice="請將這則示範公告替換成教會活動資訊。">
+          <a class="news-card" href="activities.html">
             <img class="news-image" src="https://images.unsplash.com/photo-1507692049790-de58290a4334?auto=format&fit=crop&w=700&q=80" alt="十字架與溫暖的天空">
-            <div class="news-body"><span class="date">教會活動</span><h3>教會活動與福音聚會</h3><p>邀請您與家人朋友一同參與，分享信仰中的盼望。</p></div>
+            <div class="news-body"><span class="date">教會活動</span><h3>教會活動</h3><p>邀請您與家人朋友一同參與，分享信仰中的盼望。</p></div>
           </a>
-          <a class="news-card" href="#community" data-notice="請將這則示範公告替換成青年或小組活動報名資訊。">
+          <a class="news-card" href="gatherings.html">
             <img class="news-image" src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=700&q=80" alt="人們一起參與團體活動">
-            <div class="news-body"><span class="date">團契生活</span><h3>牧區、小組與團契生活</h3><p>在彼此關懷與同行中建立連結，歡迎新朋友加入。</p></div>
+            <div class="news-body"><span class="date">團契生活</span><h3>小組與團契生活</h3><p>在彼此關懷與同行中建立連結，歡迎新朋友加入。</p></div>
           </a>
         </div>
       </section>
@@ -217,11 +218,22 @@
       <aside class="sidebar" aria-label="教會服務與影音">
         <section class="side-block" id="community">
           <h2 class="side-title">新恩FB</h2>
-          <a class="side-button line-btn" href="#contact" data-notice="請將 LINE 官方帳號網址填入 index.html 的連結位置。"><span class="side-icon">LINE</span>加入好友 <span aria-hidden="true">›</span></a>
+          <div style="background: #fff; border: 1px solid var(--line); border-radius: 9px; padding: 16px; text-align: center;">
+            <a href="https://www.facebook.com/groups/5402481183124220/" target="_blank" rel="noopener noreferrer" aria-label="連結至新恩FB社團">
+              <img src="assets/fb-qrcode.jpg" alt="新恩FB QR Code" style="width: 100%; max-width: 180px; height: auto; display: block; margin: 0 auto 10px; border-radius: 6px;">
+            </a>
+            <p style="margin: 0; font-size: 14px; color: var(--muted);">手機掃描加入 FB 社團</p>
+            <a href="https://www.facebook.com/groups/5402481183124220/" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-top: 10px; color: var(--blue); font-size: 14px; font-weight: 600;">點擊前往新恩 FB 專頁 ›</a>
+          </div>
         </section>
         <section class="side-block" id="resources">
-          <h2 class="side-title">主日崇拜直播</h2>
-          <a class="side-button youtube-btn" href="#resources" data-notice="請將教會 YouTube 直播或頻道網址填入 index.html 的連結位置。"><span class="side-icon">▶</span>主日信息直播 <span aria-hidden="true">›</span></a>
+          <h2 class="side-title">新恩主日崇拜直播</h2>
+          <div style="background: #fff; border: 1px solid var(--line); border-radius: 9px; padding: 20px 16px; text-align: center;">
+            <a class="side-button youtube-btn" href="https://www.youtube.com/@%E6%96%B0%E6%81%A9/streams" target="_blank" rel="noopener noreferrer" style="min-height: 70px; font-size: 20px; margin-bottom: 12px; border-radius: 6px;">
+              <span class="side-icon">▶</span>主日信息直播 <span aria-hidden="true">›</span>
+            </a>
+            <p style="margin: 0; font-size: 14px; color: var(--muted);">點擊前往 YouTube 觀看直播與過往信息</p>
+          </div>
         </section>
         <section class="verse-card" aria-label="今日靈修金句">
           <p class="verse-label">▣ 今日靈修金句</p>
@@ -234,17 +246,21 @@
 
   <nav class="quick-links" aria-label="快速連結">
     <div class="quick-inner">
-      <a href="#about"><span class="quick-icon">⌂</span>教會地址</a>
-      <a href="#contact"><span class="quick-icon">⌖</span>交通資訊</a>
-      <a href="#contact"><span class="quick-icon">☎</span>聯絡我們</a>
-      <a href="#community"><span class="quick-icon">●</span>LINE 生活圈</a>
-      <a href="#giving" id="giving"><span class="quick-icon">♥</span>奉獻支持</a>
+      <a href="https://www.google.com/maps/search/?api=1&query=新竹縣竹北市新民街222巷7號"
+		   target="_blank"
+		   rel="noopener noreferrer">
+		  <span class="quick-icon">⌂</span>
+		  教會地址：新竹縣竹北市新民街222巷7號
+		</a>
+      <a href="contact.html"><span class="quick-icon">⌖</span>交通資訊</a>
+      <a href="contact.html"><span class="quick-icon">☎</span>聯絡我們</a>
+      <a href="giving.html" id="giving"><span class="quick-icon">♥</span>奉獻支持</a>
     </div>
   </nav>
 
   <footer id="contact">
-    <div id="about">竹北新恩基督教會</div>
-    <div>地址、電話與聚會時間請依教會正式資訊更新</div>
+    <div id="about">† 竹北新恩基督教會</div>
+    <div></div>
     <div>© <span id="year"></span> 竹北新恩基督教會 版權所有</div>
   </footer>
   <div class="notice" id="notice" role="status" aria-live="polite"></div>
@@ -256,7 +272,7 @@
         title: "電子週報",
         subtitle: "最新消息・教會活動・信息分享",
         button: "查看最新週報",
-        target: "#news",
+        target: "assets/最新週報.pdf", // 確保這裡也指向 PDF
         image: "https://images.unsplash.com/photo-1507692049790-de58290a4334?auto=format&fit=crop&w=1600&q=85",
         position: "center 54%"
       },
@@ -265,7 +281,7 @@
         title: "新朋友看這裡",
         subtitle: "認識我們・一起敬拜・在愛中成長",
         button: "認識竹北新恩",
-        target: "#community",
+        target: "about.html",
         image: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1600&q=85",
         position: "center"
       },
@@ -274,18 +290,24 @@
         title: "主日崇拜",
         subtitle: "在敬拜中遇見神，在團契中彼此扶持",
         button: "查看聚會資訊",
-        target: "#gatherings",
+        target: "gatherings.html",
         image: "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?auto=format&fit=crop&w=1600&q=85",
         position: "center"
       }
     ];
+
     const hero = document.getElementById("hero");
     const heroEyebrow = document.getElementById("heroEyebrow");
     const heroTitle = document.getElementById("heroTitle");
     const heroSubtitle = document.getElementById("heroSubtitle");
     const heroLink = document.getElementById("heroLink");
     const dots = [...document.querySelectorAll("[data-slide]")];
+    
+    let currentIndex = 0;
+    let slideInterval;
+
     function setSlide(index) {
+      currentIndex = index;
       const slide = slides[index];
       heroEyebrow.textContent = slide.eyebrow;
       heroTitle.textContent = slide.title;
@@ -296,14 +318,39 @@
       hero.style.backgroundPosition = slide.position;
       dots.forEach((dot, i) => dot.setAttribute("aria-pressed", String(i === index)));
     }
-    dots.forEach(dot => dot.addEventListener("click", () => setSlide(Number(dot.dataset.slide))));
+
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % slides.length;
+      setSlide(currentIndex);
+    }
+
+    function startTimer() {
+      slideInterval = setInterval(nextSlide, 4500);
+    }
+
+    function stopTimer() {
+      clearInterval(slideInterval);
+    }
+
+    dots.forEach(dot => {
+      dot.addEventListener("click", () => {
+        setSlide(Number(dot.dataset.slide));
+        stopTimer();
+        startTimer();
+      });
+    });
+
+    hero.addEventListener("mouseenter", stopTimer);
+    hero.addEventListener("mouseleave", startTimer);
+
+    startTimer();
 
     const menuToggle = document.getElementById("menuToggle");
     const mainNav = document.getElementById("mainNav");
-    menuToggle.addEventListener("click", () => {
+    menuToggle.onclick = () => {
       const isOpen = mainNav.classList.toggle("open");
       menuToggle.setAttribute("aria-expanded", String(isOpen));
-    });
+    };
     mainNav.querySelectorAll("a").forEach(link => link.addEventListener("click", () => {
       mainNav.classList.remove("open");
       menuToggle.setAttribute("aria-expanded", "false");
